@@ -1,6 +1,7 @@
 import ContactSection from './sections/ContactSection';
 import IntroSection from './sections/IntroSection';
-import ProjectsSection from './sections/ProjectsSection';
+import ProjectsSection from './sections/projects/ProjectsSection';
+
 import SkillsSection from './sections/SkillsSection';
 
 export const dynamic = 'force-static';
