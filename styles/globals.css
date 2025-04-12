@@ -15,6 +15,10 @@
 
   /* ✅ 보조 텍스트용 색상 */
   --color-muted-foreground: oklch(0.4 0.01 260);
+  --color-foreground: oklch(0.15 0.01 240);
+
+  --color-muted: oklch(0.96 0.01 240);
+  --color-background: oklch(1 0 0);
 
   /* ✅ 사용자 spacing 토큰 */
   --spacing-xxs: 0.25rem;
