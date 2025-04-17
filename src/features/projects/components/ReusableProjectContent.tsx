@@ -1,8 +1,4 @@
-import ProjectLayout from '@/src/components/layout/ProjectLayout';
-import IntroSection from '../../intro/components/IntroSection';
-import ProjectInfoSections from './ProjectInfoSections';
-import TroubleshootingSection from './TroubleshootingSection';
-import InsightSection from './InsightSection';
+import ProjectLayout from "@/src/components/layout/ProjectLayout";
 import type {
   ContributionArea,
   InsightItem,
@@ -10,7 +6,11 @@ import type {
   RoleItem,
   TechReason,
   TroubleshootItem,
-} from '@/src/types/projectType';
+} from "@/src/types/projectType";
+import IntroSection from "../../intro/components/IntroSection";
+import InsightSection from "./InsightSection";
+import ProjectInfoSections from "./ProjectInfoSections";
+import TroubleshootingSection from "./TroubleshootingSection";
 
 interface ReusableProjectContentProps {
   // ProjectLayout 사용 프로퍼티
@@ -58,10 +58,7 @@ const ReusableProjectContent = ({
     <ProjectLayout title={title} duration={duration} logo={logo} links={links}>
       <div className="max-w-3xl mx-auto pb-24">
         {/* 소개 섹션 */}
-        <IntroSection
-          paragraph1={introduction.paragraph1}
-          paragraph2={introduction.paragraph2}
-        />
+        <IntroSection paragraph1={introduction.paragraph1} paragraph2={introduction.paragraph2} />
 
         {/* 프로젝트 정보 섹션들 */}
         <ProjectInfoSections

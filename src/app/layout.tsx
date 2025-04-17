@@ -13,8 +13,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: '김동혁 포트폴리오',
-  description: '김동혁 포트폴리오',
+  title: '김동혁 | 프론트엔드 개발자',
+  description: '프론트엔드 개발자 김동혁의 포트폴리오 웹사이트입니다.',
+  icons: {
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
+  },
 };
 
 export default function RootLayout({

@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import Image from 'next/image';
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface ImageSectionProps {
   image?: { src: string; alt: string };
@@ -10,7 +10,7 @@ interface ImageSectionProps {
  * 프로젝트 이미지를 표시하는 재사용 가능한 컴포넌트
  * 이미지가 없는 경우 아무것도 렌더링하지 않음
  */
-const ImageSection = ({ image, className = '' }: ImageSectionProps) => {
+const ImageSection = ({ image, className = "" }: ImageSectionProps) => {
   if (!image) return null;
 
   return (

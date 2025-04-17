@@ -70,17 +70,22 @@ export interface LinkTextItem {
  * 트러블슈팅 아이템 타입
  */
 export interface TroubleshootItem {
+  id: string;
   title: string;
-  problem: string;
-  solution: string;
-  results: string;
-  highlights: string[];
-  link: {
+  problem: Array<{ id: string; text: string }> | string;
+  solution: string[] | string;
+  results: string[] | string;
+  highlight: string[];
+  image?: TroubleshootImage;
+  link?: {
     url: string;
     text: string;
   };
-  image?: TroubleshootImage;
   linkText?: LinkTextItem[];
+  relatedLinks?: {
+    title: string;
+    url: string;
+  }[];
 }
 
 /**
@@ -96,6 +101,19 @@ export interface TroubleshootItems {
 export interface ProjectImage {
   src: string;
   alt: string;
+}
+
+/**
+ * 요약 항목 타입
+ */
+export interface SummaryItem {
+  id: string;
+  text: string;
+  highlightTerms?: string[];
+  link?: {
+    url: string;
+    text: string;
+  };
 }
 
 /**
@@ -157,13 +175,14 @@ export interface ProjectItemData {
     id: string;
     text: string;
   }[];
+  summary?: SummaryItem[];
   troubleshootItems: {
     [key: string]: {
       id: string;
       title: string;
       problem: { id: string; text: string }[];
-      solution: string;
-      results: string;
+      solution: string[];
+      results: string[];
       highlight: string[];
       image?: {
         src?: string;
@@ -177,6 +196,10 @@ export interface ProjectItemData {
       };
       linkText?: {
         text: string;
+        url: string;
+      }[];
+      relatedLinks?: {
+        title: string;
         url: string;
       }[];
     };

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 interface ExternalLinkProps {
   href: string;
@@ -12,14 +12,9 @@ interface ExternalLinkProps {
 const ExternalLink = ({
   href,
   children,
-  className = 'text-xs text-main font-medium inline-flex items-center gap-1 hover:underline',
+  className = "text-xs text-main font-medium inline-flex items-center gap-1 hover:underline",
 }: ExternalLinkProps) => (
-  <Link
-    href={href}
-    className={className}
-    target="_blank"
-    rel="noopener noreferrer"
-  >
+  <Link href={href} className={className} target="_blank" rel="noopener noreferrer">
     {children}
     <svg
       xmlns="http://www.w3.org/2000/svg"

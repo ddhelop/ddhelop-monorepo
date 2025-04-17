@@ -1,9 +1,9 @@
 import SectionHeader from '@/components/ui/SectionHeader';
-import { highlightText } from '@/lib/formatting/TextHighlighter';
+import { useFormattedText } from '@/lib/hooks/useFormattedText';
 import type {
+  LinkTextItem,
   TroubleshootImage,
   TroubleshootItem,
-  LinkTextItem,
 } from '@/types/projectType';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
@@ -24,8 +24,8 @@ interface TroubleshootingSectionProps {
         id: string;
         title: string;
         problem: Array<{ id: string; text: string }> | string;
-        solution: string;
-        results: string;
+        solution: string[] | string;
+        results: string[] | string;
         highlights?: string[];
         highlight?: string[];
         image?: TroubleshootImage;
@@ -47,6 +47,10 @@ interface TroubleshootingSectionProps {
           results?: TextLinkRange[];
         };
         linkText?: LinkTextItem[];
+        relatedLinks?: {
+          url: string;
+          title: string;
+        }[];
       }
   >;
 }
@@ -147,6 +151,7 @@ const TroubleshootingSection = ({
 }: TroubleshootingSectionProps) => {
   // 트러블슈팅 아이템 키들을 배열로 변환
   const itemKeys = Object.keys(troubleshootItems);
+  const { formatText } = useFormattedText();
 
   return (
     <motion.div
@@ -157,7 +162,7 @@ const TroubleshootingSection = ({
     >
       <h4 className="font-bold text-lg text-foreground flex items-center gap-2 pb-1 border-b border-gray-100">
         <span className="h-2 w-2 rounded-full bg-main-500" />
-        Troubleshooting
+        트러블 슈팅
       </h4>
 
       {itemKeys.map((key, index) => {
@@ -214,34 +219,17 @@ const TroubleshootingSection = ({
               </h6>
               <div className="text-sm text-muted-foreground pl-1 sm:pl-2">
                 {typeof item.problem === 'string' ? (
-                  sectionLinks?.problem ? (
+                  'section_links' in item && item.section_links?.problem ? (
                     <a
-                      href={sectionLinks.problem}
+                      href={item.section_links.problem}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block hover:underline decoration-dotted decoration-1 underline-offset-2"
                     >
-                      <p>
-                        {highlightText(item.problem, highlightTerms, termLinks)}
-                      </p>
+                      <p>{formatText(item.problem)}</p>
                     </a>
                   ) : (
-                    <p>
-                      {sectionLinkRanges?.problem
-                        ? processContentWithLinks(
-                            highlightText(
-                              item.problem,
-                              highlightTerms,
-                              termLinks
-                            ),
-                            sectionLinkRanges.problem
-                          )
-                        : highlightText(
-                            item.problem,
-                            highlightTerms,
-                            termLinks
-                          )}
-                    </p>
+                    <p>{formatText(item.problem)}</p>
                   )
                 ) : (
                   <ul className="list-disc pl-4 sm:pl-6 space-y-1.5">
@@ -254,39 +242,25 @@ const TroubleshootingSection = ({
                                 : Math.random().toString()
                             }
                           >
-                            {sectionLinks?.problem ? (
+                            {'section_links' in item &&
+                            item.section_links?.problem ? (
                               <a
-                                href={sectionLinks.problem}
+                                href={item.section_links.problem}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hover:underline decoration-dotted decoration-1 underline-offset-2"
                               >
-                                {highlightText(
+                                {formatText(
                                   typeof prob === 'object' && 'text' in prob
                                     ? prob.text
-                                    : String(prob),
-                                  highlightTerms,
-                                  termLinks
+                                    : String(prob)
                                 )}
                               </a>
-                            ) : sectionLinkRanges?.problem ? (
-                              processContentWithLinks(
-                                highlightText(
-                                  typeof prob === 'object' && 'text' in prob
-                                    ? prob.text
-                                    : String(prob),
-                                  highlightTerms,
-                                  termLinks
-                                ),
-                                sectionLinkRanges.problem
-                              )
                             ) : (
-                              highlightText(
+                              formatText(
                                 typeof prob === 'object' && 'text' in prob
                                   ? prob.text
-                                  : String(prob),
-                                highlightTerms,
-                                termLinks
+                                  : String(prob)
                               )
                             )}
                           </li>
@@ -297,62 +271,133 @@ const TroubleshootingSection = ({
               </div>
             </div>
 
-            <div className="mt-3">
-              <h6 className="text-sm font-medium bg-main/5 inline-block px-2 py-0.5 rounded-md mb-1.5">
-                해결 방법
-              </h6>
-              {sectionLinks?.solution ? (
-                <a
-                  href={sectionLinks.solution}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block hover:underline decoration-dotted decoration-1 underline-offset-2"
-                >
-                  <p className="text-sm text-muted-foreground pl-1 sm:pl-2 leading-relaxed">
-                    {highlightText(item.solution, highlightTerms, termLinks)}
-                  </p>
-                </a>
-              ) : (
-                <p className="text-sm text-muted-foreground pl-1 sm:pl-2 leading-relaxed">
-                  {linkTextItems && linkTextItems.length > 0
-                    ? // 링크 텍스트가 있는 경우, 직접 텍스트 처리
-                      addLinksToText(item.solution, linkTextItems)
-                    : sectionLinkRanges?.solution
-                    ? processContentWithLinks(
-                        highlightText(item.solution, highlightTerms, termLinks),
-                        sectionLinkRanges.solution
-                      )
-                    : highlightText(item.solution, highlightTerms, termLinks)}
-                </p>
-              )}
-            </div>
+            {/* 해결 방법 섹션: 배열이 있고 비어있지 않을 때만 표시 */}
+            {(!Array.isArray(item.solution) ||
+              (Array.isArray(item.solution) && item.solution.length > 0)) && (
+              <div className="mt-3">
+                <h6 className="text-sm font-medium bg-main/5 inline-block px-2 py-0.5 rounded-md mb-1.5">
+                  해결 방법
+                </h6>
+                <div className="text-sm text-muted-foreground pl-1 sm:pl-2">
+                  {Array.isArray(item.solution) ? (
+                    <ul className="list-disc pl-4 sm:pl-6 space-y-1.5">
+                      {item.solution.map((sol, solIndex) => (
+                        <li
+                          key={`solution-${key}-${solIndex}-${sol
+                            .substring(0, 15)
+                            .replace(/[^a-zA-Z0-9]/g, '')}`}
+                        >
+                          {formatText(sol)}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : 'section_links' in item &&
+                    item.section_links?.solution ? (
+                    <a
+                      href={item.section_links.solution}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block hover:underline decoration-dotted decoration-1 underline-offset-2"
+                    >
+                      <p>
+                        {processContentWithLinks(
+                          formatText(item.solution),
+                          sectionLinkRanges?.solution
+                        )}
+                      </p>
+                    </a>
+                  ) : (
+                    <p>
+                      {processContentWithLinks(
+                        formatText(item.solution),
+                        sectionLinkRanges?.solution || linkTextItems
+                      )}
+                    </p>
+                  )}
+                </div>
+              </div>
+            )}
 
-            <div className="mt-3">
-              <h6 className="text-sm font-medium bg-main/5 inline-block px-2 py-0.5 rounded-md mb-1.5">
-                결과
-              </h6>
-              {sectionLinks?.results ? (
-                <a
-                  href={sectionLinks.results}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block hover:underline decoration-dotted decoration-1 underline-offset-2"
-                >
-                  <p className="text-sm text-muted-foreground pl-1 sm:pl-2">
-                    {highlightText(item.results, highlightTerms, termLinks)}
-                  </p>
-                </a>
-              ) : (
-                <p className="text-sm text-muted-foreground pl-1 sm:pl-2">
-                  {sectionLinkRanges?.results
-                    ? processContentWithLinks(
-                        highlightText(item.results, highlightTerms, termLinks),
-                        sectionLinkRanges.results
-                      )
-                    : highlightText(item.results, highlightTerms, termLinks)}
-                </p>
+            {/* 성과 섹션: 배열이 있고 비어있지 않을 때만 표시 */}
+            {(!Array.isArray(item.results) ||
+              (Array.isArray(item.results) && item.results.length > 0)) && (
+              <div className="mt-3">
+                <h6 className="text-sm font-medium bg-green-50 text-green-800 inline-block px-2 py-0.5 rounded-md mb-1.5">
+                  성과
+                </h6>
+                <div className="text-sm text-muted-foreground pl-1 sm:pl-2">
+                  {Array.isArray(item.results) ? (
+                    <ul className="list-disc pl-4 sm:pl-6 space-y-1.5">
+                      {item.results.map((result, resultIndex) => (
+                        <li
+                          key={`result-${key}-${resultIndex}-${result
+                            .substring(0, 15)
+                            .replace(/[^a-zA-Z0-9]/g, '')}`}
+                        >
+                          {formatText(result)}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : 'section_links' in item && item.section_links?.results ? (
+                    <a
+                      href={item.section_links.results}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block hover:underline decoration-dotted decoration-1 underline-offset-2"
+                    >
+                      <p>
+                        {processContentWithLinks(
+                          formatText(item.results),
+                          sectionLinkRanges?.results
+                        )}
+                      </p>
+                    </a>
+                  ) : (
+                    <p>
+                      {processContentWithLinks(
+                        formatText(item.results),
+                        sectionLinkRanges?.results
+                      )}
+                    </p>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* 관련 링크 섹션 */}
+            {'relatedLinks' in item &&
+              item.relatedLinks &&
+              item.relatedLinks.length > 0 && (
+                <div className="mt-4">
+                  <h6 className="text-sm font-medium bg-blue-50 text-blue-700 inline-block px-2 py-0.5 rounded-md mb-1.5">
+                    관련 링크
+                  </h6>
+                  <div className="text-sm pl-1 sm:pl-2">
+                    <ul className="space-y-1.5">
+                      {item.relatedLinks.map((link, linkIndex) => (
+                        <li
+                          key={`related-link-${key}-${linkIndex}`}
+                          className="flex items-center"
+                        >
+                          <span className="text-blue-500 mr-1">•</span>
+                          <a
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-600 hover:text-blue-800 hover:underline flex items-center"
+                          >
+                            {link.title}
+                            <ExternalLink
+                              size={12}
+                              className="ml-1 inline-block"
+                            />
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               )}
-            </div>
 
             {item.link && (
               <div className="mt-2">

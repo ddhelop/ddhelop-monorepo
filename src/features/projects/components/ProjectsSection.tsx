@@ -1,5 +1,5 @@
-import linkitData from '../data/LinkitData';
-import ProjectItem from './ProjectItem';
+import linkitData from "../data/LinkitData";
+import ProjectItem from "./ProjectItem";
 
 export default function ProjectsSection() {
   return (

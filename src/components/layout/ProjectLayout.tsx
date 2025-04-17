@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
-import Image from 'next/image';
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 
 interface ProjectLayoutProps {
   logo?: string | React.ReactNode;
@@ -24,7 +24,7 @@ export default function ProjectLayout({
 }: ProjectLayoutProps) {
   const [ref, inView] = useInView({
     threshold: 0,
-    rootMargin: '-30% 0px -70% 0px',
+    rootMargin: "-30% 0px -70% 0px",
   });
   const [isFixed, setIsFixed] = useState(false);
 
@@ -39,12 +39,12 @@ export default function ProjectLayout({
         className={`sticky z-20 transition-all duration-300
         ${
           isFixed
-            ? 'top-3 mx-auto max-w-[95%] rounded-full shadow-[0_1px_6px_rgba(55,48,163,0.08)] border border-indigo-200/40 bg-white'
-            : 'top-6 mx-0 border-transparent'
+            ? "top-3 mx-auto max-w-[95%] rounded-full shadow-[0_1px_6px_rgba(55,48,163,0.08)] border border-indigo-200/40 bg-white"
+            : "top-6 mx-0 border-transparent"
         }`}
       >
         <div className="flex items-center gap-4 px-5 py-3">
-          {typeof logo === 'string' ? (
+          {typeof logo === "string" ? (
             <div className="w-7 h-7 relative rounded-sm overflow-hidden">
               <Image src={logo} alt={title} fill className="object-cover" />
             </div>
@@ -57,14 +57,12 @@ export default function ProjectLayout({
           <div className="flex flex-col md:flex-row md:items-center md:gap-4">
             <span
               className={`font-semibold ${
-                isFixed ? 'text-base' : 'text-xl'
+                isFixed ? "text-base" : "text-xl"
               } text-foreground truncate max-w-[16rem] transition-all duration-300`}
             >
               {title}
             </span>
-            {duration && (
-              <span className="text-sm text-muted-foreground">{duration}</span>
-            )}
+            {duration && <span className="text-sm text-muted-foreground">{duration}</span>}
 
             <div className="flex gap-3 mt-1 md:mt-0 md:ml-2">
               {links?.github && (

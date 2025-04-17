@@ -55,6 +55,23 @@
         url: string;
         text: string;
       };
+      linkText?: {
+        text: string;
+        url: string;
+      }[];
+      term_links?: {
+        [term: string]: string;
+      };
+      section_links?: {
+        problem?: string;
+        solution?: string;
+        results?: string;
+      };
+      section_link_ranges?: {
+        problem?: { text: string; url: string }[];
+        solution?: { text: string; url: string }[];
+        results?: { text: string; url: string }[];
+      };
     };
   };
   insight?: string;
@@ -69,6 +86,72 @@
    - 새 프로젝트 데이터를 모듈화하여 작성합니다 (각 섹션별 상수 정의).
    - 데이터를 `ProjectItemData` 형식으로 조합합니다.
    - `projects` 객체에 새 프로젝트를 추가합니다.
+
+## 텍스트 내 링크 추가 방법
+
+트러블슈팅 항목에서 텍스트 내 특정 부분에 링크를 추가하는 방법은 다음과 같습니다:
+
+### 1. linkText 속성 사용
+
+`linkText` 속성을 사용하여 solution 텍스트 내 특정 부분에 링크를 추가할 수 있습니다:
+
+```typescript
+troubleshootItems: {
+  example: {
+    // ... 다른 속성들
+    solution: "이 문제를 해결하기 위해 React Query의 useInfiniteQuery를 사용했습니다.",
+    linkText: [
+      {
+        text: "React Query의 useInfiniteQuery",
+        url: "https://tanstack.com/query/latest/docs/react/reference/useInfiniteQuery"
+      }
+    ]
+  }
+}
+```
+
+이 설정은 "React Query의 useInfiniteQuery" 텍스트에 지정된 URL로 연결되는 링크를 자동으로 생성합니다.
+
+### 2. section_link_ranges 속성 사용
+
+특정 섹션(problem, solution, results) 내의 여러 텍스트 범위에 링크를 추가하려면 `section_link_ranges` 속성을 사용합니다:
+
+```typescript
+troubleshootItems: {
+  example: {
+    // ... 다른 속성들
+    section_link_ranges: {
+      solution: [
+        {
+          text: '백오프 알고리즘을 적용',
+          url: 'https://example.com/backoff-algorithm',
+        },
+        {
+          text: '메시지 캐싱 시스템',
+          url: 'https://example.com/message-caching',
+        },
+      ];
+    }
+  }
+}
+```
+
+### 3. term_links 속성 사용
+
+반복되는 용어에 동일한 링크를 적용하려면 `term_links` 속성을 사용합니다:
+
+```typescript
+troubleshootItems: {
+  example: {
+    // ... 다른 속성들
+    highlight: ["WebSocket", "STOMP"],
+    term_links: {
+      "WebSocket": "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API",
+      "STOMP": "https://stomp-js.github.io/"
+    }
+  }
+}
+```
 
 ## 사용 방법
 
