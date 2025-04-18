@@ -1,4 +1,3 @@
-import ProjectLayout from "@/src/components/layout/ProjectLayout";
 import type {
   ContributionArea,
   InsightItem,
@@ -6,11 +5,13 @@ import type {
   RoleItem,
   TechReason,
   TroubleshootItem,
-} from "@/src/types/projectType";
-import IntroSection from "../../intro/components/IntroSection";
-import InsightSection from "./InsightSection";
-import ProjectInfoSections from "./ProjectInfoSections";
-import TroubleshootingSection from "./TroubleshootingSection";
+} from '@/types/projectType';
+import { useMemo } from 'react';
+import IntroSection from '../../intro/components/IntroSection';
+import InsightSection from './InsightSection';
+import ProjectInfoSections from './ProjectInfoSections';
+import TroubleshootingSection from './TroubleshootingSection';
+import ProjectLayout from '@/components/layout/ProjectLayout';
 
 interface ReusableProjectContentProps {
   // ProjectLayout 사용 프로퍼티
@@ -54,11 +55,19 @@ const ReusableProjectContent = ({
   // 기술 스택 이름만 추출
   const technologies = techStack.map((tech) => tech.name);
 
+  // Convert troubleshootItems array to Record<string, TroubleshootItem>
+  const troubleshootItemsRecord = useMemo(() => {
+    return troubleshootItems.reduce((acc, item) => {
+      acc[item.id] = item;
+      return acc;
+    }, {} as Record<string, TroubleshootItem>);
+  }, [troubleshootItems]);
+
   return (
     <ProjectLayout title={title} duration={duration} logo={logo} links={links}>
       <div className="max-w-3xl mx-auto pb-24">
         {/* 소개 섹션 */}
-        <IntroSection paragraph1={introduction.paragraph1} paragraph2={introduction.paragraph2} />
+        <IntroSection />
 
         {/* 프로젝트 정보 섹션들 */}
         <ProjectInfoSections
@@ -70,7 +79,7 @@ const ReusableProjectContent = ({
         />
 
         {/* 트러블슈팅 섹션 */}
-        <TroubleshootingSection troubleshootItems={troubleshootItems} />
+        <TroubleshootingSection troubleshootItems={troubleshootItemsRecord} />
 
         {/* 인사이트 섹션 */}
         <InsightSection insights={insights} />
