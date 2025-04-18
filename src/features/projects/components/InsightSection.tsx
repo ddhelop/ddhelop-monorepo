@@ -1,4 +1,5 @@
 import SectionHeader from '@/components/ui/SectionHeader';
+import { useFormattedText } from '@/lib/hooks/useFormattedText';
 import type { InsightItem } from '@/types/projectType';
 
 interface InsightSectionProps {
@@ -15,6 +16,8 @@ const InsightSection = ({
   insights,
   bgColor,
 }: InsightSectionProps) => {
+  const { formatText } = useFormattedText();
+
   // Support both single insight string and insights array
   if (insights && insights.length > 0) {
     return (
@@ -25,7 +28,7 @@ const InsightSection = ({
             <div key={item.id} className="space-y-2">
               <h5 className="text-base font-medium">{item.title}</h5>
               <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
-                {item.description}
+                {formatText(item.description)}
               </p>
               {item.image && (
                 <div className="mt-2">
@@ -49,7 +52,7 @@ const InsightSection = ({
       <SectionHeader title="Insight" className="border-b-0 pb-1" />
       {insight && (
         <p className="text-sm text-muted-foreground leading-relaxed mt-4 whitespace-pre-line">
-          {insight}
+          {formatText(insight)}
         </p>
       )}
     </div>
