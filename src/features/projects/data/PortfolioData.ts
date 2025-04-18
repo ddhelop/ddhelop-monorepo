@@ -117,6 +117,10 @@ const projectData: ProjectItemData = {
   // 요약 (성과 및 주요 특징을 통합)
   summary: [
     {
+      id: 'summary-0',
+      text: '커스텀 마크업<code><highlight></code>, <code><code></code>, <code><link></code>을 React 엘리먼트로 변환해주는 <highlight>텍스트 파서 훅을 구현</highlight>했습니다.',
+    },
+    {
       id: 'summary-1',
       text: '<highlight>정적 사이트 생성(SSG)을 적용</highlight>해 SEO 점수 100점을 달성하고, 빠른 초기 로딩으로 포트폴리오 노출도와 접근성을 동시에 향상시켰습니다.',
     },
