@@ -6,7 +6,7 @@
     "dev": "next dev --turbo",
     "build": "next build --turbo",
     "start": "next start",
-    "lint": "biome check . --apply",
+    "lint": "biome check . --write",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
