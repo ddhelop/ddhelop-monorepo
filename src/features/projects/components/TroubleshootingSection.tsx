@@ -1,4 +1,3 @@
-import SectionHeader from '@/components/ui/SectionHeader';
 import { useFormattedText } from '@/lib/hooks/useFormattedText';
 import type {
   LinkTextItem,
@@ -376,7 +375,7 @@ const TroubleshootingSection = ({
                     <ul className="space-y-1.5">
                       {item.relatedLinks.map((link, linkIndex) => (
                         <li
-                          key={`related-link-${key}-${linkIndex}`}
+                          key={`related-link-${key}-${link.url}`}
                           className="flex items-center"
                         >
                           <span className="text-blue-500 mr-1">•</span>

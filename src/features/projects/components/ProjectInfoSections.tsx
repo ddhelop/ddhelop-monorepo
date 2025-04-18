@@ -1,6 +1,10 @@
-import SectionHeader from "@/src/components/ui/SectionHeader";
-import type { ContributionArea, RoleItem, TechReason } from "@/src/types/projectType";
-import { motion } from "framer-motion";
+import SectionHeader from '@/components/ui/SectionHeader';
+import type {
+  ContributionArea,
+  RoleItem,
+  TechReason,
+} from '@/types/projectType';
+import { motion } from 'framer-motion';
 
 interface ProjectInfoSectionsProps {
   members: string;
@@ -46,8 +50,12 @@ const ProjectInfoSections = ({
             {contributionAreas.map((contrib) => (
               <div key={contrib.title}>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-foreground">{contrib.title}</span>
-                  <span className="text-sm font-medium text-main">{contrib.percentage}%</span>
+                  <span className="text-sm text-foreground">
+                    {contrib.title}
+                  </span>
+                  <span className="text-sm font-medium text-main">
+                    {contrib.percentage}%
+                  </span>
                 </div>
               </div>
             ))}
@@ -90,7 +98,9 @@ const ProjectInfoSections = ({
         <div className="space-y-4 pl-5">
           {techReasons.map((item) => (
             <div key={item.tech} className="flex items-start gap-3">
-              <span className="text-sm font-medium text-main">{item.tech}:</span>
+              <span className="text-sm font-medium text-main">
+                {item.tech}:
+              </span>
               <p className="text-sm text-muted-foreground">{item.reason}</p>
             </div>
           ))}

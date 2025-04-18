@@ -1,14 +1,15 @@
 'use client';
-import { Fragment, type ReactNode } from 'react';
+import { Fragment } from 'react';
 import { motion } from 'framer-motion';
 import ProjectLayout from '@/components/layout/ProjectLayout';
 import ImageSection from '@/components/ui/ImageSection';
-import type { ProjectItemData } from '@/types/projectType';
+import type { ProjectItemData, TroubleshootItem } from '@/types/projectType';
 import SummarySection from './SummarySection';
 import TroubleshootingSection from './TroubleshootingSection';
 import { useFormattedText } from '@/lib/hooks/useFormattedText';
 import Image from 'next/image';
 import { useState, useRef } from 'react';
+import InsightSection from './InsightSection';
 
 interface ProjectItemProps {
   data: ProjectItemData;
@@ -61,8 +62,8 @@ export default function ProjectItem({ data }: ProjectItemProps) {
             </span>
           </div>
 
+          {/* 외부 링크 */}
           <div className="flex items-center justify-between sm:justify-end gap-2 sm:gap-3 mt-1 sm:mt-0">
-            {/* 외부 링크 */}
             <div className="flex gap-2">
               {meta.links?.github && (
                 <a
@@ -289,32 +290,56 @@ export default function ProjectItem({ data }: ProjectItemProps) {
         )}
 
         {/* 트러블슈팅 섹션 */}
-        {Object.keys(troubleshootItems).length > 0 && (
+        {troubleshootItems && Object.keys(troubleshootItems).length > 0 && (
           <div className="mt-8 sm:mt-12">
             <TroubleshootingSection
-              // @ts-ignore - 데이터 포맷 이슈는 추후 TroubleshootItem 인터페이스와 맞게 수정 예정
-              troubleshootItems={troubleshootItems}
+              troubleshootItems={
+                troubleshootItems as Record<
+                  string,
+                  | TroubleshootItem
+                  | {
+                      id: string;
+                      title: string;
+                      problem: string | { id: string; text: string }[];
+                      solution: string | string[];
+                      results: string | string[];
+                      highlights?: string[];
+                      highlight?: string[];
+                      image?: {
+                        src: string;
+                        alt: string;
+                        width: number;
+                        height: number;
+                      };
+                      link?: {
+                        url: string;
+                        text: string;
+                      };
+                      term_links?: {
+                        [term: string]: string;
+                      };
+                      section_links?: {
+                        problem?: string;
+                        solution?: string;
+                        results?: string;
+                      };
+                      linkText?: {
+                        text: string;
+                        url: string;
+                      }[];
+                      relatedLinks?: {
+                        title: string;
+                        url: string;
+                      }[];
+                    }
+                >
+              }
             />
           </div>
         )}
 
         {/* 인사이트 */}
-        {insight && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.9 }}
-            className="mt-8 sm:mt-12 bg-indigo-50/80 rounded-lg p-3 sm:p-5 border border-indigo-100/40"
-          >
-            <h4 className="font-bold text-base sm:text-lg text-foreground flex items-center gap-1.5 sm:gap-2 pb-1">
-              <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-main-500" />
-              인사이트
-            </h4>
-            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-2 sm:mt-3">
-              {formatText(insight)}
-            </p>
-          </motion.div>
-        )}
+        {insight && <InsightSection insight={insight} />}
       </div>
     </div>
   );
