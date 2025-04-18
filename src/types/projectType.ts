@@ -154,6 +154,10 @@ export interface ProjectItemData {
     };
     logo?: string;
   };
+  theme?: {
+    bgColor: string;
+    textColor?: string;
+  };
   introduction: {
     description: string[];
     image?: ProjectImage;

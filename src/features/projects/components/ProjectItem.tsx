@@ -21,6 +21,7 @@ interface ProjectItemProps {
 export default function ProjectItem({ data }: ProjectItemProps) {
   const {
     meta,
+    theme,
     introduction,
     members,
     contributionAreas,
@@ -33,10 +34,14 @@ export default function ProjectItem({ data }: ProjectItemProps) {
 
   const { formatText } = useFormattedText();
 
+  // 기본 테마 및 사용자 지정 테마 설정
+  const bgColor = theme?.bgColor || 'bg-white';
+  const textColor = theme?.textColor || 'text-foreground';
+
   return (
-    <div className="relative mx-0 sm:mx-0">
+    <div className={`${bgColor} -mx-6 sm:-mx-8 px-4 py-6 sm:py-8 relative`}>
       {/* 프로젝트 헤더 (항상 표시) */}
-      <div className="sticky top-2 sm:top-3 z-20 bg-white rounded-lg sm:rounded-xl border border-gray-200/70 transition-all duration-300 mb-3 sm:mb-4 mx-1 sm:mx-0">
+      <div className="sticky top-2 sm:top-3 z-20 bg-white rounded-lg sm:rounded-xl border border-gray-200/70 transition-all duration-300 mb-5 sm:mb-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between p-2 sm:p-4 gap-1.5 sm:gap-2">
           <div className="flex items-center gap-1.5 sm:gap-2">
             {meta.logo && (
@@ -85,13 +90,13 @@ export default function ProjectItem({ data }: ProjectItemProps) {
       </div>
 
       {/* 프로젝트 콘텐츠 (항상 표시) */}
-      <div className="space-y-6 sm:space-y-8 px-1 sm:px-0 mt-6 sm:mt-8">
+      <div className="space-y-6 sm:space-y-8 mt-6 sm:mt-8">
         {/* 소개 */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="bg-muted/10 rounded-lg p-3 sm:p-5 border border-gray-200/60"
+          className="sm:bg-white rounded-lg  sm:p-5 sm:border sm:border-gray-200/60"
         >
           <div className="text-muted-foreground text-sm leading-relaxed space-y-3 sm:space-y-4">
             {introduction.description.map((paragraph, index) => (
