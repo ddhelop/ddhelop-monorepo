@@ -1,5 +1,5 @@
-import IntroSection from '../../features/intro/components/IntroSection';
-import ProjectsSection from '../../features/projects/components/ProjectsSection';
+import IntroSection from '../features/intro/components/IntroSection';
+import ProjectsSection from '../features/projects/components/ProjectsSection';
 
 export const dynamic = 'force-static';
 

@@ -1,13 +1,9 @@
 'use client';
-import { Fragment } from 'react';
-import ProjectLayout from '@/components/layout/ProjectLayout';
+
 import ImageSection from '@/components/ui/ImageSection';
 import type { ProjectItemData, TroubleshootItem } from '@/types/projectType';
-import SummarySection from './SummarySection';
 import TroubleshootingSection from './TroubleshootingSection';
 import { useFormattedText } from '@/lib/hooks/useFormattedText';
-import Image from 'next/image';
-import { useState, useRef } from 'react';
 import InsightSection from './InsightSection';
 
 interface ProjectItemProps {
