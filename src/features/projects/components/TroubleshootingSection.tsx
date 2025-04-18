@@ -4,7 +4,6 @@ import type {
   TroubleshootImage,
   TroubleshootItem,
 } from '@/types/projectType';
-import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import { Fragment, type ReactNode } from 'react';
@@ -153,12 +152,7 @@ const TroubleshootingSection = ({
   const { formatText } = useFormattedText();
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5, delay: 0.6 }}
-      className="space-y-8"
-    >
+    <div className="space-y-8">
       <h4 className="font-bold text-lg text-foreground flex items-center gap-2 pb-1 border-b border-gray-100">
         <span className="h-2 w-2 rounded-full bg-main-500" />
         트러블 슈팅
@@ -428,7 +422,7 @@ const TroubleshootingSection = ({
           </div>
         );
       })}
-    </motion.div>
+    </div>
   );
 };
 
