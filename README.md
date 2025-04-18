@@ -11,7 +11,6 @@
 - **애니메이션**: Framer Motion
 - **아이콘**: Lucide React
 - **코드 품질 관리**: Biome
-- **UI 개발 환경**: Storybook
 
 ## 📋 주요 기능
 
@@ -37,7 +36,6 @@
 ```
 ddhrepo/
 ├── .next/             # Next.js 빌드 결과물
-├── .storybook/        # Storybook 설정
 ├── public/            # 정적 파일
 ├── src/               # 소스 코드
 │   ├── app/           # Next.js App Router
@@ -79,12 +77,6 @@ pnpm build
 
 ```bash
 pnpm start
-```
-
-### Storybook 실행
-
-```bash
-pnpm storybook
 ```
 
 ## 🧪 코드 품질 관리
