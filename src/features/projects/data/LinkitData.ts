@@ -13,12 +13,18 @@ const projectData: ProjectItemData = {
   // 프로젝트 메타 정보
   meta: {
     title: '링킷(Linkit)',
-    duration: '2024.05 ~ 현재',
+    duration: '24.05 ~ 현재',
     links: {
       website: 'https://www.linkit.im',
       github: 'https://github.com/ddhelop/Linkit_disclosure',
     },
     logo: '/logos/linkit_logo.svg',
+  },
+
+  // 테마 설정
+  theme: {
+    bgColor: 'bg-blue-50/30',
+    textColor: 'text-blue-900',
   },
 
   // 프로젝트 소개
