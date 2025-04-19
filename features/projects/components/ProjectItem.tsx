@@ -1,10 +1,11 @@
 'use client';
 
-import ImageSection from '@/components/ui/ImageSection';
-import type { ProjectItemData, TroubleshootItem } from '@/types/projectType';
 import TroubleshootingSection from './TroubleshootingSection';
-import { useFormattedText } from '@/lib/hooks/useFormattedText';
+
 import InsightSection from './InsightSection';
+import { ProjectItemData, TroubleshootItem } from '../../../types/projectType';
+import useFormattedText from '../../../lib/hooks/useFormattedText';
+import ImageSection from '../../../components/ui/ImageSection';
 
 interface ProjectItemProps {
   data: ProjectItemData;

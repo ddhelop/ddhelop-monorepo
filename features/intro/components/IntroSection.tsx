@@ -1,5 +1,12 @@
-import { useFormattedText } from '@/lib/hooks/useFormattedText';
+import useFormattedText from '../../../lib/hooks/useFormattedText';
+
 import introData from '../data/IntroData';
+
+interface IntroSection {
+  id: string;
+  title: string;
+  paragraphs: string[];
+}
 
 export default function IntroSection() {
   const { formatText } = useFormattedText();
@@ -20,13 +27,13 @@ export default function IntroSection() {
       </h1>
 
       <div className="space-y-6 w-full">
-        {introData.sections.map((section, index) => (
+        {introData.sections.map((section: IntroSection, index: number) => (
           <div key={section.id} className="space-y-2 w-full">
             <h2 className="font-bold text-base sm:text-lg text-foreground">
               {section.title}
             </h2>
             <ul className="space-y-2 pl-5 sm:pl-6 list-disc w-full">
-              {section.paragraphs.map((paragraph, pIndex) => (
+              {section.paragraphs.map((paragraph: string, pIndex: number) => (
                 <li
                   key={`${section.id}-p${pIndex}`}
                   className="text-sm text-muted-foreground leading-relaxed w-full"

@@ -1,5 +1,5 @@
-import type { SummaryItem } from '@/types/projectType';
 import { motion } from 'framer-motion';
+import { SummaryItem } from '../../../types/projectType';
 
 interface SummarySectionProps {
   summaryItems: SummaryItem[];

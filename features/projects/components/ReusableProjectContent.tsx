@@ -5,13 +5,13 @@ import type {
   RoleItem,
   TechReason,
   TroubleshootItem,
-} from '@/types/projectType';
+} from '../../../types/projectType';
 import { useMemo } from 'react';
 import IntroSection from '../../intro/components/IntroSection';
 import InsightSection from './InsightSection';
 import ProjectInfoSections from './ProjectInfoSections';
 import TroubleshootingSection from './TroubleshootingSection';
-import ProjectLayout from '@/components/layout/ProjectLayout';
+import ProjectLayout from '../../../components/layout/ProjectLayout';
 
 interface ReusableProjectContentProps {
   // ProjectLayout 사용 프로퍼티

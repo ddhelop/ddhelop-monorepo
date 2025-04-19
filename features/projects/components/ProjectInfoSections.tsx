@@ -1,10 +1,10 @@
-import SectionHeader from '@/components/ui/SectionHeader';
-import type {
+import { motion } from 'framer-motion';
+import {
   ContributionArea,
   RoleItem,
   TechReason,
-} from '@/types/projectType';
-import { motion } from 'framer-motion';
+} from '../../../types/projectType';
+import SectionHeader from '../../../components/ui/SectionHeader';
 
 interface ProjectInfoSectionsProps {
   members: string;

@@ -1,4 +1,4 @@
-import type { IntroData } from '@/types/introType';
+import type { IntroData } from '../../../types/introType';
 
 /**
  * 소개 섹션 데이터

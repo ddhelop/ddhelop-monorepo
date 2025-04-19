@@ -1,4 +1,4 @@
-import type { ProjectItemData } from '@/types/projectType';
+import type { ProjectItemData } from '../../../types/projectType';
 
 const projectData: ProjectItemData = {
   meta: {

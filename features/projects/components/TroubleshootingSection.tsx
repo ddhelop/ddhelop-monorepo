@@ -1,9 +1,9 @@
-import { useFormattedText } from '@/lib/hooks/useFormattedText';
+import useFormattedText from '../../../lib/hooks/useFormattedText';
 import type {
   LinkTextItem,
   TroubleshootImage,
   TroubleshootItem,
-} from '@/types/projectType';
+} from '../../../types/projectType';
 import { ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import { Fragment, type ReactNode } from 'react';
