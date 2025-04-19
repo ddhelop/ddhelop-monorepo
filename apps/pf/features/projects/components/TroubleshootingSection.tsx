@@ -1,4 +1,4 @@
-import useFormattedText from '../../../lib/hooks/useFormattedText';
+import { useFormattedText } from '@ddhelop/hooks';
 import type {
   LinkTextItem,
   TroubleshootImage,

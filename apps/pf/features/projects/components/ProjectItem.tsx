@@ -3,9 +3,12 @@
 import TroubleshootingSection from './TroubleshootingSection';
 
 import InsightSection from './InsightSection';
-import { ProjectItemData, TroubleshootItem } from '../../../types/projectType';
-import useFormattedText from '../../../lib/hooks/useFormattedText';
-import ImageSection from '../../../components/ui/ImageSection';
+import type {
+  ProjectItemData,
+  TroubleshootItem,
+} from '../../../types/projectType';
+import { useFormattedText } from '@ddhelop/hooks';
+import ImageSection from '@ddhelop/ui/src/ImageSection';
 
 interface ProjectItemProps {
   data: ProjectItemData;

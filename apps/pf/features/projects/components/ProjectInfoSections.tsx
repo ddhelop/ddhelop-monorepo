@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
-import {
+import type {
   ContributionArea,
   RoleItem,
   TechReason,
 } from '../../../types/projectType';
-import SectionHeader from '../../../components/ui/SectionHeader';
+import SectionHeader from '@ddhelop/ui/src/SectionHeader';
 
 interface ProjectInfoSectionsProps {
   members: string;
