@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true // Turborepo or Project References 사용할 경우 권장
+  },
+  "files": [],
+  "include": [],
+  "references": [
+    { "path": "packages/hooks" },
+    { "path": "packages/ui" },
+    { "path": "apps/pf" }
+  ]
+}
