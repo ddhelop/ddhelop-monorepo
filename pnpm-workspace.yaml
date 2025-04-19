@@ -1,0 +1,4 @@
+# ddhelop-monorepo/pnpm-workspace.yaml
+packages:
+  - 'apps/*'
+  - 'packages/*'

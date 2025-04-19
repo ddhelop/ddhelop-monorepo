@@ -1,8 +1,8 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnp
+# -----------------------------
+# 📦 Dependencies
+# -----------------------------
+node_modules/
+.pnp/
 .pnp.*
 .yarn/*
 !.yarn/patches
@@ -10,34 +10,64 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
+# -----------------------------
+# 🧪 Testing
+# -----------------------------
+coverage/
 
-# next.js
-/.next/
-/out/
+# -----------------------------
+# 🚀 Next.js build output
+# -----------------------------
+.next/
+out/
 
-# production
-/build
+# -----------------------------
+# 📦 Build output
+# -----------------------------
+build/
+dist/
 
-# misc
+# -----------------------------
+# 🛠 Miscellaneous
+# -----------------------------
 .DS_Store
 *.pem
 
-# debug
+# -----------------------------
+# 🐛 Debug logs
+# -----------------------------
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# env files (can opt-in for committing if needed)
+# -----------------------------
+# 🔐 Environment files
+# -----------------------------
 .env*
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
+.next.env.d.ts
 next-env.d.ts
+.storybook.log
 
-*storybook.log
+# -----------------------------
+# ⚙️ Vercel config
+# -----------------------------
+.vercel/
+
+# -----------------------------
+# 📁 IDE / Editor
+# -----------------------------
+.vscode/
+.idea/
+
+# -----------------------------
+# 🧹 Turbo repo cache (optional)
+# -----------------------------
+turbo/
+
+# -----------------------------
+# 🧪 Jest (if used)
+# -----------------------------
+jest.config.js
+jest.config.ts

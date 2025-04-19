@@ -1,0 +1,59 @@
+@import 'tailwindcss';
+
+@theme {
+  /* ✅ 사용자 색상 팔레트 (Toss 스타일 진한 파랑) */
+  --color-main-100: oklch(0.92 0.05 270);
+  --color-main-300: oklch(0.75 0.08 270);
+  --color-main-500: oklch(0.6 0.12 270); /* 남색 기반 메인 컬러 */
+  --color-main-700: oklch(0.45 0.15 270);
+
+  /* ✅ 서브 색상 팔레트 (회색/검정 기반) */
+  --color-sub-100: oklch(0.95 0 0);
+  --color-sub-300: oklch(0.7 0 0);
+  --color-sub-500: oklch(0.4 0 0);
+  --color-sub-700: oklch(0.2 0 0);
+
+  /* ✅ 보조 텍스트용 색상 */
+  --color-muted-foreground: oklch(0.4 0.01 260);
+  --color-foreground: oklch(0.15 0.01 240);
+
+  --color-muted: oklch(0.96 0.01 240);
+  --color-background: oklch(1 0 0);
+
+  /* ✅ 사용자 spacing 토큰 */
+  --spacing-xxs: 0.25rem;
+  --spacing-xxl: 4rem;
+
+  /* ✅ 사용자 브레이크포인트 */
+  --breakpoint-3xl: 1920px;
+}
+
+@utility content-auto {
+  content-visibility: auto;
+}
+
+@utility scrollbar-hidden {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility perspective-* {
+  perspective: --value([length]);
+}
+
+@utility tab-* {
+  tab-size: --value(--tab-size- *);
+}
+
+@theme {
+  --tab-size-2: 2;
+  --tab-size-4: 4;
+  --tab-size-github: 8;
+}
+
+@custom-variant theme-midnight {
+  &:where([data-theme='midnight'] *) {
+    @slot;
+  }
+}
