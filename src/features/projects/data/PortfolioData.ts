@@ -15,23 +15,24 @@ const projectData: ProjectItemData = {
     title: '개인 포트폴리오 웹사이트',
     duration: '25.04 ~ 현재',
     links: {
-      website: 'https://ddhelop.github.io',
-      github: 'https://pf.ddhelop.com',
+      website: 'https://pf.ddhelop.com',
+      github: 'https://github.com/ddhelop/ddhrepo',
     },
     logo: '/logos/my_logo.svg',
   },
 
   // 테마 설정
   theme: {
-    bgColor: 'bg-gray-50/30',
+    bgColor: 'bg-blue-50/30',
     textColor: 'text-gray-900',
   },
 
   // 프로젝트 소개
   introduction: {
     description: [
-      '프론트엔드 개발자로서 나의 강점과 프로젝트 경험을 효과적으로 보여줄 수 있는 포트폴리오를 만들고자 웹 기반 개인 사이트를 직접 제작하게 되었습니다.',
-      '노션, 서핏, 오픈프로젝트처럼 제한된 포맷의 도구들은 나만의 스타일을 담기에 어려움이 있었고, 피그마는 정적이면서도 유지보수가 번거롭다는 한계를 느꼈습니다. 이에 따라 자유로운 디자인 설계와 손쉬운 콘텐츠 업데이트, 그리고 나만의 브랜딩을 반영할 수 있는 웹 프로젝트로 포트폴리오를 기획하고 디자인, 개발까지 전부 직접 진행했습니다.',
+      '프론트엔드 개발자로서 <highlight>본인 강점과 프로젝트 경험을 효과적으로</highlight> 보여줄 수 있는 포트폴리오를 만들고자 웹 기반 사이트를 직접 개발하게 되었습니다.',
+      '노션, 서핏, 오픈프로젝트는 제한된 포맷으로 나만의 스타일을 담기에 어려움이 있었고, 피그마는 정적이면서도 유지보수가 번거로웠습니다.',
+      '이에 따라 <highlight>자유로운 디자인 설계와 손쉬운 업데이트</highlight>, 그리고 나만의 브랜딩을 반영할 수 있는 1인 웹 프로젝트입니다.',
     ],
 
     // image: {
