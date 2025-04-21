@@ -1,4 +1,3 @@
-import { useFormattedText } from '@ddhelop/hooks';
 import type {
   LinkTextItem,
   TroubleshootImage,
@@ -7,6 +6,7 @@ import type {
 import { ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import { Fragment, type ReactNode } from 'react';
+import useFormattedText from '@ddhelop/hooks/useFormattedText';
 
 // 텍스트 내 링크 범위 정의 타입
 interface TextLinkRange {

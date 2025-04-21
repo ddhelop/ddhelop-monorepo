@@ -1,5 +1,4 @@
-import { useFormattedText } from '@ddhelop/hooks';
-
+import useFormattedText from '@ddhelop/hooks/useFormattedText';
 import introData from '../data/IntroData';
 
 interface IntroSection {
@@ -14,7 +13,7 @@ export default function IntroSection() {
   return (
     <section
       id="intro"
-      className="py-24 space-y-10 text-left max-w-4xl mx-auto"
+      className="py-10 space-y-10 text-left max-w-4xl mx-auto"
     >
       <h1 className="text-4xl font-bold text-foreground leading-relaxed">
         안녕하세요.

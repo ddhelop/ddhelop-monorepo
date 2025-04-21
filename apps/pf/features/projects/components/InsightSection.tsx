@@ -1,6 +1,6 @@
-import SectionHeader from '@ddhelop/ui/src/SectionHeader';
-import { useFormattedText } from '@ddhelop/hooks';
 import type { InsightItem } from '../../../types/projectType';
+import SectionHeader from '../../../shared/ui/SectionHeader';
+import useFormattedText from '@ddhelop/hooks/useFormattedText';
 
 interface InsightSectionProps {
   insight?: string;

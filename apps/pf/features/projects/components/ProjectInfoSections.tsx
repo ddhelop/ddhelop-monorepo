@@ -4,7 +4,7 @@ import type {
   RoleItem,
   TechReason,
 } from '../../../types/projectType';
-import SectionHeader from '@ddhelop/ui/src/SectionHeader';
+import SectionHeader from '../../../shared/ui/SectionHeader';
 
 interface ProjectInfoSectionsProps {
   members: string;

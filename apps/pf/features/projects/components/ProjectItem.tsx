@@ -7,9 +7,9 @@ import type {
   ProjectItemData,
   TroubleshootItem,
 } from '../../../types/projectType';
-import { useFormattedText } from '@ddhelop/hooks';
-import ImageSection from '@ddhelop/ui/src/ImageSection';
 
+import ImageSection from '../../../shared/ui/ImageSection';
+import useFormattedText from '@ddhelop/hooks/useFormattedText';
 interface ProjectItemProps {
   data: ProjectItemData;
 }
