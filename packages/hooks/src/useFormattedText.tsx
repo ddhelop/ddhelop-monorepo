@@ -1,5 +1,4 @@
 import React from 'react';
-
 /**
  * Hook to process text containing markup tags and convert them to React elements
  *

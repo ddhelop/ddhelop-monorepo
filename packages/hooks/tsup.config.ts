@@ -1,11 +1,11 @@
+// packages/hooks/tsup.config.ts
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
-  entry: ['src/index.ts'],
-  format: ['esm', 'cjs'],
+  entry: ['src/useFormattedText.ts'],
   dts: true,
+  format: ['esm', 'cjs'],
+  splitting: false,
+  clean: true,
   external: ['react'],
-  esbuildOptions(options) {
-    options.jsx = 'transform'; // 💡 핵심: esbuild에 직접 전달
-  },
 });

@@ -1,11 +1,10 @@
+// packages/hooks/tsconfig.json
 {
-  "extends": "../../tsconfig.base.json", // ✅ 루트의 설정을 상속받음
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "dist",
-    "incremental": false,
-    "rootDir": "src",
-    "declaration": true,
-    "emitDeclarationOnly": true
+    "jsx": "react-jsx", // JSX 때문에 꼭 필요
+    "composite": true, // turborepo에서 필요한 설정
+    "outDir": "dist" // 빌드 결과가 저장될 폴더
   },
   "include": ["src"]
 }

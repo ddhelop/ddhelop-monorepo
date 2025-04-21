@@ -1,15 +1,25 @@
 {
   "name": "@ddhelop/hooks",
   "version": "0.0.1",
-  "private": true,
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "main": "./dist/useFormattedText.js",
+  "module": "./dist/useFormattedText.mjs",
+  "types": "./dist/useFormattedText.d.ts",
+  "exports": {
+    "./useFormattedText": {
+      "import": "./dist/useFormattedText.mjs",
+      "require": "./dist/useFormattedText.js",
+      "types": "./dist/useFormattedText.d.ts"
+    }
+  },
   "scripts": {
-    "lint": "biome check . --apply",
-    "build": "tsup"
+    "build": "tsup src/useFormattedText.tsx --dts --format esm,cjs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "tsup": "^8",
+    "typescript": "^5"
   },
   "peerDependencies": {
-    "react": "^18.0.0",
-    "next": "^14.0.0"
+    "react": "^18 || ^19"
   }
 }
