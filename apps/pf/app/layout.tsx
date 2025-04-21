@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import '../../../styles/globals.css';
-import ScrollProgressBar from '@ddhelop/ui/src/ScrollProgressBar';
-import FloatingNav from '@ddhelop/ui/src/FloatingNav';
-import Footer from '@ddhelop/ui/src/Footer';
+
+import Footer from '../shared/ui/Footer';
+import ScrollProgressBar from '../shared/ui/ScrollProgressBar';
+import FloatingNav from '../shared/ui/FloatingNav';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',

@@ -8,7 +8,7 @@ const projectData: ProjectItemData = {
       website: 'https://www.rocketibt.co.kr/', // 실제 URL로 교체 필요
       github: 'https://github.com/ddhelop/IBT_Homepage-Web', // 비공개 외주 프로젝트일 경우 비워둘 수 있음
     },
-    logo: '/logos/ibt_logo.svg',
+    logo: '/logos/IBT_logo.svg',
   },
 
   theme: {
