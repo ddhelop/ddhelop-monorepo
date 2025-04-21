@@ -1,9 +1,9 @@
 {
-  "name": "my-portfolio",
+  "name": "my-resume",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo -p 3001",
+    "dev": "next dev --turbo -p 3000",
     "build": "next build --turbo",
     "start": "next start",
     "lint": "biome check . --apply"

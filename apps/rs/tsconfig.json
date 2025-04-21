@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "jsx": "preserve",
+    "incremental": true
+  },
+  "include": [
+    ".",
+    ".next/types/**/*.ts",
+    "../../packages/hooks/src/useFormattedText.tsx"
+  ],
+  "exclude": ["node_modules"]
+}
