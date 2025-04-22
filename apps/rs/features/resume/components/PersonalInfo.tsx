@@ -36,6 +36,14 @@ export default function PersonalInfo() {
             GitHub
           </a>
           <a
+            href="https://rs.ddhelop.com"
+            className="text-lg underline hover:text-main-500"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Resume
+          </a>
+          <a
             href="https://pf.ddhelop.com"
             className="text-lg underline hover:text-main-500"
             target="_blank"
