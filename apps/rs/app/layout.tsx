@@ -20,9 +20,9 @@ export const metadata: Metadata = {
   title: '김동혁 | 이력서',
   description: '프론트엔드 개발자 김동혁의 이력서입니다.',
   icons: {
-    icon: '/logos/my_logo.svg',
-    shortcut: '/logos/my_logo.svg',
-    apple: '/logos/my_logo.svg',
+    icon: '/rs.svg',
+    shortcut: '/reserved.svg',
+    apple: '/rs.svg',
   },
 };
 
