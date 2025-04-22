@@ -3,7 +3,6 @@ import Introduction from '../features/resume/components/Introduction';
 import ProjectSection from '../features/resume/components/ProjectSection';
 import ExperienceSection from '../features/resume/components/ExperienceSection';
 import EducationSection from '../features/resume/components/EducationSection';
-import SkillsSection from '../features/resume/components/SkillsSection';
 
 export const dynamic = 'force-static';
 
@@ -30,11 +29,6 @@ export default function ResumePage() {
         {/* 5. Education */}
         <section>
           <EducationSection />
-        </section>
-
-        {/* 6. Skills */}
-        <section>
-          <SkillsSection />
         </section>
       </div>
     </main>
