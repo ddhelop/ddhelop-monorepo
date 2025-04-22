@@ -38,7 +38,7 @@ const projectsData: ProjectWithLinks = {
       position: '개인 프로젝트',
       members: '4인(기획 1, 디자인 1, 백엔드 1, 프론트엔드 1)',
       links: {
-        github: 'https://github.com/ddhelop',
+        github: 'https://github.com/ddhelop/Linkit_disclosure',
         websites: [
           {
             name: 'linkit.im',

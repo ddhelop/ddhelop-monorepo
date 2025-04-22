@@ -143,7 +143,7 @@ export default function ProjectSection() {
 
                   {/* Links */}
                   {project.links && (
-                    <div className="flex flex-col space-y-2">
+                    <div className="flex flex-row space-x-3 md:flex-col md:space-x-0 md:space-y-2">
                       {project.links.github && (
                         <a
                           href={project.links.github}
