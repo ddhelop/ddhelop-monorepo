@@ -1,5 +1,5 @@
-if (process.env.NODE_ENV === 'production') {
-  // console.log('🚀 프로덕션 환경입니다. 인증 건너뜁니다.');
+if (process.env.NODE_ENV === 'production' || process.env.CI === 'true') {
+  // console.log('🚀 CI/배포 환경입니다. 인증 건너뜁니다.');
   process.exit(0);
 }
 
