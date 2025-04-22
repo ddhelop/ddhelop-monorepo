@@ -59,3 +59,32 @@
     @slot;
   }
 }
+
+/* 인쇄용 스타일 */
+@media print {
+  .floating-nav {
+    display: none !important;
+  }
+
+  /* 푸터 숨기기 */
+  footer {
+    display: none !important;
+  }
+
+  /* 인쇄 시 배경색과 그림자 적용 */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+/* 첫 페이지 여백 설정 */
+@page :first {
+  /* margin-top: -1cm; */
+  margin-bottom: 6cm;
+}
+
+/* 이름이 지정된 페이지에 대한 여백 설정 */
+@page wide-margins {
+  margin: 2cm;
+}

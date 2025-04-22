@@ -67,7 +67,9 @@ const FloatingNav = () => {
 
   return (
     <div
-      className={`fixed top-1/3 ${isMobile ? 'right-4' : 'right-5'} z-40 group`}
+      className={`fixed top-1/3 ${
+        isMobile ? 'right-4' : 'right-5'
+      } z-40 group floating-nav`}
     >
       {/* Minimized view (indicator lines) */}
       <div className="flex flex-col items-end space-y-3 group-hover:opacity-0 group-hover:invisible transition-all duration-200">
