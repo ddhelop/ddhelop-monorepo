@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@source inline("text-[13px] text-blue-500 text-main-500 bg-gray-100 px-1.5 py-0.5 text-[19px] text-gray-900 text-blue-900 hover:text-main-500");
+
 @theme {
   /* ✅ 사용자 색상 팔레트 (Toss 스타일 진한 파랑) */
   --color-main-100: oklch(0.92 0.05 270);
