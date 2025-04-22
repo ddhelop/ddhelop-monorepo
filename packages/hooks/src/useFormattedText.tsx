@@ -4,10 +4,10 @@ export function useFormattedText() {
   const formatText = (text: string | undefined): React.ReactNode[] => {
     if (!text) return [];
 
-    return text.split('\n').map((line) => {
+    return text.split('\n').map((line, index) => {
       const processed = parseLine(line);
       return (
-        <React.Fragment key={line.slice(0, 30)}>
+        <React.Fragment key={`${index}-${line.slice(0, 30)}`}>
           {processed}
           <br />
         </React.Fragment>

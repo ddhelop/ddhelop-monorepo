@@ -12,9 +12,9 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
 }) => {
   return (
     <h4
-      className={`font-bold text-lg text-foreground flex items-center gap-2 pb-1 border-b border-gray-100 ${className}`}
+      className={`font-bold text-lg text-black flex items-center gap-2 pb-1 border-b border-gray-100 ${className}`}
     >
-      <span className="h-2 w-2 rounded-full bg-main-500" />
+      <span className="h-2 w-2 rounded-full bg-black" />
       {title}
     </h4>
   );

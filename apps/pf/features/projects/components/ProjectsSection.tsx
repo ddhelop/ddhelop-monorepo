@@ -15,11 +15,11 @@ export default function ProjectsSection() {
         <div id="project-portfolio">
           <ProjectItem data={portfolioData} />
         </div>
-        <div id="project-moa">
-          <ProjectItem data={moaData} />
-        </div>
         <div id="project-ibt">
           <ProjectItem data={ibtData} />
+        </div>
+        <div id="project-moa">
+          <ProjectItem data={moaData} />
         </div>
       </div>
     </section>
