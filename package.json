@@ -23,6 +23,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
+    "dotenv": "^16.5.0",
     "framer-motion": "^12.6.3",
     "lucide-react": "^0.487.0",
     "postcss": "^8.5.3",

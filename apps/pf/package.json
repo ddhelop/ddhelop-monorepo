@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo -p 3001",
-    "build": "next build --turbo",
-    "start": "next start",
-    "lint": "biome check . --apply"
-  },
+  "dev": "node ../../scripts/check-env.js && next dev --turbo -p 3001",
+  "build": "node ../../scripts/check-env.js && next build --turbo",
+  "start": "next start",
+  "lint": "biome check . --apply"
+},
+
   "dependencies": {
     "@ddhelop/hooks": "workspace:*",
     "next": "15.3.0",

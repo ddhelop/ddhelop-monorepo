@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo -p 3000",
-    "build": "next build --turbo",
+    "dev": "node ../../scripts/check-env.js && next dev --turbo -p 3000",
+    "build": "node ../../scripts/check-env.js && next build --turbo",
     "start": "next start",
     "lint": "biome check . --apply"
   },
