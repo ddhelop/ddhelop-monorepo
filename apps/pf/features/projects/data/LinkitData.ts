@@ -30,7 +30,7 @@ const projectData: ProjectItemData = {
   // 프로젝트 소개
   introduction: {
     description: [
-      '링킷은 개인과 팀을 효율적으로 연결하는 <highlight>팀 빌딩 및 네트워킹 플랫폼</highlight>입니다.',
+      '링킷은 개인과 팀을 효율적으로 연결하는 <sb>팀 빌딩 및 네트워킹 플랫폼</sb>입니다.',
       '기존 팀 매칭 서비스들의 검색 난이도, 신뢰성 부족, 제한적인 매칭 대상 등의 문제를 해결하고자 시작된 프로젝트입니다.',
       '기존 커뮤니티 기반의 팀 매칭의 한계를 넘어, 기술 스택 기반 매칭, 실시간 채팅, 팀 관리, 포트폴리오 기능까지 포함하여 팀의 시작과 실행을 하나의 흐름으로 연결합니다.',
     ],
@@ -121,31 +121,31 @@ const projectData: ProjectItemData = {
   summary: [
     {
       id: 'summary-1',
-      text: '<highlight>30개 이상의 실제 서비스 화면과 50개 이상의 재사용 컴포넌트</highlight>를 설계 및 구현하고, 전 화면에서 모바일/데스크톱 <highlight>반응형 UI</highlight>를 완벽하게 대응',
+      text: '<sb>30개 이상의 실제 서비스 화면과 50개 이상의 재사용 컴포넌트</sb>를 설계 및 구현하고, 전 화면에서 모바일/데스크톱 <sb>반응형 UI</sb>를 완벽하게 대응',
     },
     {
       id: 'summary-2',
-      text: '<highlight>60개 이상의 API 연동 경험</highlight>을 통해 복잡한 비즈니스 로직과 UI 상태를 안정적으로 연결하고, 유지보수 가능한 구조를 설계',
+      text: '<sb>60개 이상의 API 연동 경험</sb>을 통해 복잡한 비즈니스 로직과 UI 상태를 안정적으로 연결하고, 유지보수 가능한 구조를 설계',
     },
     {
       id: 'summary-3',
-      text: '기존 Desktop 위주의 디자인 시안을 <highlight>다양한 디바이스 환경에 최적화된 반응형 UI로 디자인 없이 임의로 구현</highlight>',
+      text: '기존 Desktop 위주의 디자인 시안을 <sb>다양한 디바이스 환경에 최적화된 반응형 UI</sb>로 디자인 없이 임의로 구현',
     },
     {
       id: 'summary-4',
-      text: '<highlight>React Query의 prefetchQuery</highlight>로 데이터를 서버에서 선패칭하고 클라이언트 컴포넌트에서 하이드레이션하여,\nCSR 기반 구조에서 발생하던 <highlight>초기 로딩 지연과 콘텐츠 깜빡임 문제를 해결</highlight>',
+      text: '<sb>React Query의 prefetchQuery</sb>로 데이터를 서버에서 선패칭하고 클라이언트 컴포넌트에서 하이드레이션하여,\nCSR 기반 구조에서 발생하던 <sb>초기 로딩 지연과 콘텐츠 깜빡임 문제를 해결</sb>',
     },
     {
       id: 'summary-5',
-      text: 'React Query의 <link href="https://ddhelop.tistory.com/12"><highlight>Infinite Query와 리스트 가상화를 결합해 무한스크롤 구현</highlight></link>,  첫 콘텐츠 로딩 시간 1.5s → 0.3s로 약 80% 단축, 페이지 평균 체류 시간 20% 증가 (GA 기준)',
+      text: 'React Query의 <link href="https://ddhelop.tistory.com/12">Infinite Query와 리스트 가상화를 결합해 무한스크롤 구현</link>,  첫 콘텐츠 로딩 시간 1.5s → 0.3s로 약 80% 단축, 페이지 평균 체류 시간 20% 증가 (GA 기준)',
     },
     {
       id: 'summary-6',
-      text: '<link href="https://ddhelop.tistory.com/9"><highlight>Feature-Sliced Design 아키텍처</highlight>를 도입</link>하여 기능 단위 모듈화와 관심사 분리를 통해 코드 가독성과 유지보수성을 향상',
+      text: '<link href="https://ddhelop.tistory.com/9">Feature-Sliced Design 아키텍처를 도입</link>하여 기능 단위 모듈화와 관심사 분리를 통해 코드 가독성과 유지보수성을 향상',
     },
     {
       id: 'summary-7',
-      text: '<code>WebSocket</code> + <code>STOMP</code> 기반의 실시간 채팅 및 알림 시스템 구현,\n<highlight>Zustand 상태 캐싱</highlight> 전략과 자동 재연결 로직을 통해 안정성과 사용자 경험 개선',
+      text: '<code>WebSocket</code> + <code>STOMP</code> 기반의 실시간 채팅 및 알림 시스템 구현,\n<sb>Zustand 상태 캐싱</sb> 전략과 자동 재연결 로직을 통해 안정성과 사용자 경험 개선',
     },
     {
       id: 'summary-8',
@@ -153,7 +153,7 @@ const projectData: ProjectItemData = {
     },
     {
       id: 'summary-9',
-      text: '<highlight>Next.js 13의 중첩 레이아웃 구조를 활용</highlight>해 모바일과 PC에서 일관된 채팅 UX 제공, 사용자 전환 행동을 고려한 레이아웃 최적화',
+      text: '<sb>Next.js 13의 중첩 레이아웃 구조</sb>를 활용해 모바일과 PC에서 일관된 채팅 UX 제공, 사용자 전환 행동을 고려한 레이아웃 최적화',
     },
   ],
 
@@ -178,7 +178,7 @@ const projectData: ProjectItemData = {
         },
       ],
       solution: [
-        'Next.js App Router 환경에서 <highlight>React Query의 prefetchQuery</highlight>를 활용해 서버에서 데이터를 선패칭하고, 클라이언트 컴포넌트에서는 <highlight>useQuery</highlight>를 통한 하이드레이션 방식으로 CSR 기반 렌더링 구조를 최적화했습니다.',
+        'Next.js App Router 환경에서 <sb>React Query의 prefetchQuery</sb>를 활용해 서버에서 데이터를 선패칭하고, 클라이언트 컴포넌트에서는 <sb>useQuery</sb>를 통한 하이드레이션 방식으로 CSR 기반 렌더링 구조를 최적화했습니다.',
         '데이터 구조와 페이지 흐름에 맞춰 클라이언트 렌더링의 한계를 보완하고, 초기 화면 완성도와 SEO 접근성을 개선했습니다.',
       ],
       results: [

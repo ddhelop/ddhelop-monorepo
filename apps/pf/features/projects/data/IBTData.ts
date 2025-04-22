@@ -5,8 +5,8 @@ const projectData: ProjectItemData = {
     title: 'IBT 웹사이트',
     duration: '2024.01 ~ 2024.02',
     links: {
-      website: 'https://www.rocketibt.co.kr/', // 실제 URL로 교체 필요
-      github: 'https://github.com/ddhelop/IBT_Homepage-Web', // 비공개 외주 프로젝트일 경우 비워둘 수 있음
+      website: 'https://www.rocketibt.co.kr/',
+      github: 'https://github.com/ddhelop/IBT_Homepage-Web',
     },
     logo: '/logos/IBT_logo.svg',
   },
@@ -19,8 +19,8 @@ const projectData: ProjectItemData = {
   introduction: {
     description: [
       'IBT는 스타트업 브랜드의 비전과 ESG 가치를 전달하는 정적 웹사이트 구축 프로젝트입니다.',
-      '브랜드의 정체성을 시각적으로 표현하는 <highlight>스냅 스크롤 기반 인터랙티브 랜딩 페이지</highlight>를 구현하고, 다국어 지원 및 반응형 웹 환경에 중점을 두었습니다.',
-      '1개월 간의 외주 협업 프로젝트로, <highlight>기획자와 소통하며 기획, 설계, 개발 전반</highlight>에 참여했습니다.',
+      '브랜드의 정체성을 시각적으로 표현하는 <sb>스냅 스크롤 기반 인터랙티브 랜딩 페이지</sb>를 구현하고, 다국어 지원 및 반응형 웹 환경에 중점을 두었습니다.',
+      '1개월 간의 외주 협업 프로젝트로, <sb>기획자와 소통하며 기획, 설계, 개발 전반</sb>에 참여했습니다.',
     ],
   },
 
@@ -50,25 +50,25 @@ const projectData: ProjectItemData = {
       id: 'tech-1',
       tech: 'Next.js',
       reason:
-        '정적 페이지 기반으로 빠른 로딩 속도와 배포 효율성을 확보하고, 일부 페이지에는 SSR을 적용해 동적 콘텐츠의 최신성과 SEO를 강화했습니다.',
+        'SSG 기반의 빠른 페이지 로딩과 SSR을 혼합해 브랜드 콘텐츠의 신뢰성과 SEO 성능을 모두 확보',
     },
     {
       id: 'tech-2',
       tech: 'Framer Motion',
       reason:
-        '브랜드 아이덴티티를 강조하기 위한 스냅 스크롤 기반 인터랙션 및 애니메이션 구현에 최적이었습니다.',
+        '브랜드 아이덴티티를 강조하기 위한 스냅 스크롤 기반 인터랙션 및 애니메이션 구현에 최적',
     },
     {
       id: 'tech-3',
       tech: 'TailwindCSS',
       reason:
-        '정적 사이트에 필요한 일관된 디자인 시스템을 빠르게 구축하고 반응형 디자인에 유리했습니다.',
+        '정적 사이트에 필요한 일관된 디자인 시스템을 빠르게 구축하고 반응형 디자인에 유리',
     },
     {
       id: 'tech-4',
       tech: 'Recoil',
       reason:
-        '다국어 지원 환경을 위한 글로벌 상태 관리에 용이하고, 전역 상태를 단순하고 직관적으로 제어할 수 있어 빠르게 다국어 전환 기능을 구현할 수 있었습니다.',
+        '다국어 상태 전환 등 글로벌 상태 관리가 필요한 부분에서 직관적이고 효율적인 구조를 제공',
     },
   ],
 
@@ -77,19 +77,23 @@ const projectData: ProjectItemData = {
   summary: [
     {
       id: 'summary-1',
-      text: '<highlight>일부 페이지에 SSR을 적용</highlight>해 브랜드 콘텐츠의 최신성과 SEO 반영을 동시에 달성했습니다.',
+      text: '스타트업 브랜드의 ESG 및 정체성을 전달하는 SSG 정적 웹사이트 구축',
     },
     {
       id: 'summary-2',
-      text: '<highlight>스크롤 인터랙션 기반 랜딩 페이지</highlight>를 구현',
+      text: 'Framer Motion + scroll-snap으로 스크롤 인터랙션 중심 랜딩 페이지 구현',
     },
     {
       id: 'summary-3',
-      text: '<highlight>Recoil을 이용한 글로벌 상태 관리</highlight>를 통해 다국어 지원 환경을 구축.',
+      text: 'Recoil을 활용한 글로벌 상태 관리로 다국어 전환 기능 개발',
     },
     {
       id: 'summary-4',
-      text: '모든 페이지에 <highlight>반응형 웹 디자인</highlight>을 적용해 다양한 디바이스에서 일관된 사용자 경험을 제공',
+      text: 'TailwindCSS 기반 반응형 UI로 전 디바이스 일관된 UX 제공',
+    },
+    {
+      id: 'summary-5',
+      text: '디자이너 및 클라이언트와 협업하며 실무 커뮤니케이션 및 피드백 수용 역량 향상',
     },
   ],
 
@@ -104,24 +108,23 @@ const projectData: ProjectItemData = {
         },
         {
           id: 'snap-2',
-          text: '초기에는 JavaScript 기반 강제 스크롤 방식(window.scrollTop 등)을 사용하여 화면 전환이 부자연스럽고 버벅이는 문제가 발생',
+          text: '초기에는 JavaScript 기반의 강제 스크롤 로직으로 UX 부자연스러움 발생',
         },
         {
           id: 'snap-3',
-          text: '기기별 해상도에 따라 이동 거리 계산이 달라져 일관된 UX 제공에 어려움이 있었음',
+          text: '디바이스 해상도별 화면 정렬 불일치로 UX 일관성 저하',
         },
       ],
       solution: [
-        'CSS 기반 <highlight>scroll-snap-type</highlight>을 적용해 자연스러운 snap scroll 구현',
-        '<highlight>TailwindCSS의 snap-scroll</highlight> 유틸리티를 사용하여 각 섹션을 정렬하고 자바스크립트 코드를 최소화',
-        '디바이스 별 화면 높이에 맞춰 각 섹션 크기를 동적으로 조절하여 UX 일관성 확보',
+        'CSS 기반 <sb>scroll-snap-type</sb>을 적용해 자연스러운 snap scroll 구현',
+        '<sb>TailwindCSS의 snap-scroll</sb> 유틸리티를 사용하여 각 섹션을 정렬하고 자바스크립트 코드를 최소화',
       ],
       results: [
-        '자연스러운 스크롤 애니메이션으로 브랜드 메시지 전달 효과 증가',
-        '스크롤 성능 개선 및 크로스 디바이스 호환성 향상',
+        '스크롤 렉 및 전환 부자연스러움 해결',
+        '인터랙션 완성도 및 사용자 몰입도 상승',
         '개발 코드의 간결성 확보 및 유지보수 비용 감소',
       ],
-      highlight: ['scroll-snap', 'TailwindCSS snap-scroll', 'UX 향상'],
+      highlight: [''],
     },
   },
 
