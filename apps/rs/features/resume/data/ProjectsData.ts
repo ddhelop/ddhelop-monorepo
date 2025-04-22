@@ -41,8 +41,8 @@ const projectsData: ProjectWithLinks = {
         github: 'https://github.com/ddhelop',
         websites: [
           {
-            name: 'Demo',
-            url: 'https://linkit.example.com',
+            name: 'linkit.im',
+            url: 'https://linkit.im',
           },
         ],
       },
@@ -67,8 +67,8 @@ const projectsData: ProjectWithLinks = {
         '<bsb>대학생부터 스타트업 대표까지 많은 사람들이 겪는 팀빌딩의 어려움을 해결하고자 만든 서비스입니다.</bsb> 프론트엔드 개발을 단독으로 담당하고 기획부터 디자인에 폭넓게 관여하며 다양한 경험치를 쌓게 해준 프로덕트입니다.',
         'Next.js, TypeScript 기반으로 30개 이상 화면과 50개 이상의 컴포넌트 설계 및 개발',
         '60개 이상 API 연동을 통해 복잡한 상태 흐름 안정적 설계 및 유지보수 가능한 구조 구축',
-        '페이지별 SSR과 CSR에 맞는 렌더링 전략을 분리 적용 ---주요 5개 페이지는 SSR 기반 데이터 패칭을 통해 초기 로딩 속도 및 SEO 점수 향상 ---나머지 CSR 페이지는 TanStack Query의 <code>prefetchQuery</code>를 활용해 콘텐츠 깜빡임 및 초기 로딩 지연 문제 해결 ---SEO 점수 84 → 100, FCP 1.6s → 0.4s로 개선 (Lighthouse 기준)',
-        'Infinite Query와 리스트 가상화를 결합하여 무한 스크롤 구현 ---첫 콘텐츠 로딩 시간 1.5s -> 0.3s, 체류 시간 20% 증가',
+        '페이지별 SSR과 CSR에 맞는 렌더링 전략을 분리 적용 ---주요 5개 페이지는 SSR 기반 데이터 패칭을 통해 초기 로딩 속도 및 SEO 점수 향상 ---나머지 CSR 페이지는 TanStack Query의 <code>prefetchQuery</code>를 활용해 콘텐츠 깜빡임 및 초기 로딩 지연 문제 해결 ---SEO 점수 84 → 100, FCP 1.6s → 0.4s로 개선 (Lighthouse 기준) --- <link href="https://www.ddhelop.com/11">관련 블로그 포스트</link>',
+        'Infinite Query와 리스트 가상화를 결합하여 무한 스크롤 구현 ---첫 콘텐츠 로딩 시간 1.5s -> 0.3s, 체류 시간 20% 증가 --- <link href="https://www.ddhelop.com/12">관련 블로그 포스트</link>',
         'WebSocket과 STOMP를 활용한 실시간 채팅 및 알림 시스템 구현 ---Zustand 상태 캐싱과 자동 재연결 로직을 통해 안정성과 사용자 경험 개선',
         'Feature-Sliced Design 아키텍처로 관심사 분리와 코드 가독성 향상',
         '디자이너 없이 다양한 디바이스에 대응하는 반응형 UI를 직접 구현',

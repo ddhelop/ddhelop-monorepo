@@ -174,7 +174,7 @@ export default function ProjectSection() {
                           href={project.links.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-sm hover:underline underline flex items-center gap-1"
+                          className="text-sm hover:underline underline hover:text-main-500 flex items-center gap-1 "
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -204,7 +204,7 @@ export default function ProjectSection() {
                             href={website.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-sm hover:underline underline flex items-center gap-1"
+                            className="text-sm hover:underline underline hover:text-main-500 flex items-center gap-1"
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -225,29 +225,6 @@ export default function ProjectSection() {
                             {website.name}
                           </a>
                         ))}
-
-                      {/* 상세보기 링크 - 고정 */}
-                      <a
-                        href={`#${project.id}-detail`}
-                        className="text-sm hover:underline underline flex items-center gap-1"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          aria-hidden="true"
-                        >
-                          <circle cx="11" cy="11" r="8" />
-                          <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                        </svg>
-                        상세보기
-                      </a>
                     </div>
                   )}
                 </div>

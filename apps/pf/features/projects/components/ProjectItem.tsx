@@ -95,7 +95,7 @@ export default function ProjectItem({ data }: ProjectItemProps) {
       <div className="space-y-6 sm:space-y-8 mt-6 sm:mt-8">
         {/* 소개 */}
         <div className="sm:bg-white rounded-lg sm:p-5 sm:border sm:border-gray-200/60">
-          <div className="text-muted-foreground text-sm leading-relaxed space-y-3 sm:space-y-4">
+          <div className="text-muted-foreground font-medium text-sm leading-relaxed space-y-3 sm:space-y-4">
             {introduction.description.map((paragraph, index) => (
               <p
                 key={`intro-paragraph-${meta.title}-${index}`}
@@ -114,11 +114,11 @@ export default function ProjectItem({ data }: ProjectItemProps) {
         <div className="mt-8 sm:mt-12 space-y-8 sm:space-y-12">
           {/* 구성원 */}
           <div>
-            <h4 className="font-bold text-base sm:text-lg text-foreground flex items-center gap-1.5 sm:gap-2 pb-1 border-b border-gray-100">
-              <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-main-500" />
+            <h4 className="font-bold text-base sm:text-lg text-black flex items-center gap-1.5 sm:gap-2 pb-1 border-b border-gray-100">
+              <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-black" />
               구성원
             </h4>
-            <p className="text-sm text-muted-foreground pl-1 sm:pl-3 mt-2">
+            <p className="text-sm font-medium text-muted-foreground pl-1 sm:pl-3 mt-2">
               {formatText(members)}
             </p>
           </div>
@@ -126,8 +126,8 @@ export default function ProjectItem({ data }: ProjectItemProps) {
           {/* 기여도 */}
           {contributionAreas.length > 0 && (
             <div>
-              <h4 className="font-bold text-base sm:text-lg text-foreground flex items-center gap-1.5 sm:gap-2 pb-1 border-b border-gray-100">
-                <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-main-500" />
+              <h4 className="font-bold text-base sm:text-lg text-black flex items-center gap-1.5 sm:gap-2 pb-1 border-b border-gray-100">
+                <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-black" />
                 기여도
               </h4>
               <div className="space-y-2 sm:space-y-3 pl-1 sm:pl-3 mt-2">
@@ -151,8 +151,8 @@ export default function ProjectItem({ data }: ProjectItemProps) {
         {/* 기술 스택 & 선정 이유 통합 섹션 */}
         {(techStack.length > 0 || techReasons.length > 0) && (
           <div className="mt-8 sm:mt-12 space-y-4">
-            <h4 className="font-bold text-base sm:text-lg text-foreground flex items-center gap-1.5 sm:gap-2 pb-1 border-b border-gray-100">
-              <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-main-500" />
+            <h4 className="font-bold text-base sm:text-lg text-black flex items-center gap-1.5 sm:gap-2 pb-1 border-b border-gray-100">
+              <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-black" />
               기술 스택 & 선정 이유
             </h4>
 
@@ -210,11 +210,11 @@ export default function ProjectItem({ data }: ProjectItemProps) {
         {/* 요약 섹션 */}
         {summary && summary.length > 0 && (
           <div className="space-y-3 mt-8 sm:mt-12">
-            <h4 className="font-bold text-base sm:text-lg text-foreground flex items-center gap-1.5 sm:gap-2 pb-1 border-b border-gray-100">
-              <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-main-500" />
+            <h4 className="font-bold text-base sm:text-lg text-black flex items-center gap-1.5 sm:gap-2 pb-1 border-b border-gray-100">
+              <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-black" />
               요약
             </h4>
-            <ul className="list-disc pl-4 sm:pl-8 text-xs sm:text-sm text-muted-foreground space-y-2 sm:space-y-3 mt-2">
+            <ul className="list-disc pl-4 sm:pl-8 text-xs sm:text-sm font-medium text-muted-foreground space-y-2 sm:space-y-3 mt-2">
               {summary.map((item) => (
                 <li key={item.id} className="leading-6">
                   {formatText(item.text)}
