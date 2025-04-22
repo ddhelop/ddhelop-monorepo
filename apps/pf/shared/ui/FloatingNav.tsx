@@ -30,6 +30,9 @@ const FloatingNav = () => {
       const projectsSection = document.getElementById(
         'projects'
       ) as HTMLElement | null;
+      const skillsSection = document.getElementById(
+        'skills'
+      ) as HTMLElement | null;
       const projectElements =
         document.querySelectorAll<HTMLElement>('[id^="project-"]');
 
@@ -39,6 +42,8 @@ const FloatingNav = () => {
         scrollPosition < introSection.offsetTop + introSection.offsetHeight
       ) {
         setActiveSection('intro');
+      } else if (skillsSection && scrollPosition >= skillsSection.offsetTop) {
+        setActiveSection('skills');
       } else if (projectsSection) {
         if (scrollPosition < projectsSection.offsetTop + 200) {
           setActiveSection('projects');
@@ -121,6 +126,13 @@ const FloatingNav = () => {
         <div
           className={`w-3.5 h-0.5 ${
             activeSection === 'project-linkit' ? 'bg-gray-900' : 'bg-gray-300'
+          } transition-colors`}
+        />
+
+        {/* Skills line */}
+        <div
+          className={`w-5 h-0.5 ${
+            activeSection === 'skills' ? 'bg-gray-900' : 'bg-gray-300'
           } transition-colors`}
         />
       </div>
@@ -212,6 +224,19 @@ const FloatingNav = () => {
                 </button>
               </div>
             </div>
+
+            {/* Skills section */}
+            <button
+              type="button"
+              onClick={() => scrollToSection('skills')}
+              className={`text-sm whitespace-nowrap transition-all text-left cursor-pointer rounded-md py-1 px-2 ${
+                activeSection === 'skills'
+                  ? 'text-gray-900 font-medium bg-[#5670CF]/10'
+                  : 'text-gray-500 hover:text-gray-700 hover:bg-[#5670CF]/10'
+              }`}
+            >
+              Skills
+            </button>
           </div>
         </div>
       </div>
