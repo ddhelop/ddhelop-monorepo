@@ -1,9 +1,7 @@
-
 <div style="display: flex; gap: 16px;">
   <img src="https://github.com/user-attachments/assets/dce34e9d-6bd8-4231-863d-c99ac37400bc" alt="rs" width="100"/>
   <img src="https://github.com/user-attachments/assets/ce66bea6-0046-4648-8fd9-896e9082e14f" alt="rs" width="100"/>
 </div>
-
 
 # ddhelop-monorepo
 
@@ -15,7 +13,8 @@
 ddhelop-monorepo/
 ├── apps/                 # 앱 프로젝트
 │   ├── pf/               # 포트폴리오 웹사이트
-│   └── rs/               # 이력서 앱
+│   ├── rs/               # 이력서 앱
+│   └── blog/             # 블로그 앱
 ├── packages/             # 공유 패키지
 │   └── hooks/            # 공통 React 훅
 ├── styles/               # 전역 스타일
@@ -39,11 +38,14 @@ ddhelop-monorepo/
 ### 앱 (Apps)
 
 - **pf**: 포트폴리오 웹사이트
-  - **주요 기능**: 소개, 프로젝트, 기술 스택
-  - **특징**: 반응형 디자인, 플로팅 네비게이션, 프로젝트 갤러리
+  - **주요 기능**: 프로젝트 소개, 기술 스택, 경력 정보, 연락처
+  - **특징**: 인터랙티브 UI, 반응형 디자인, 다크 모드 지원
 - **rs**: 이력서 앱
   - **주요 기능**: 인적 사항, 프로젝트 경험, 경력, 교육
   - **특징**: 플로팅 네비게이션
+- **blog**: 블로그 앱
+  - **주요 기능**: MDX 기반 블로그 포스트, 코드 하이라이팅, 태그 시스템
+  - **특징**: SSG 정적 생성, SEO 최적화, 성능 최적화
 
 ### 패키지 (Packages)
 

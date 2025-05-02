@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-@source inline("text-[13px] text-blue-500 text-main-500 bg-gray-100 px-1.5 py-0.5 text-[19px] text-gray-900 text-blue-900 hover:text-main-500 underline");
+@source inline("text-[13px] text-blue-500 text-main-500 bg-gray-100 px-1.5 py-0.5 text-[19px] text-gray-900 text-blue-900 hover:text-main-500 underline text-primary hover:text-primary/80 transition-colors");
 
 @theme {
   /* ✅ 사용자 색상 팔레트 (Toss 스타일 진한 파랑) */
@@ -21,6 +21,11 @@
 
   --color-muted: oklch(0.96 0.01 240);
   --color-background: oklch(1 0 0);
+
+  /* ✅ 사용자 색상 정의 - Tailwind v4에서 필요 */
+  --color-primary: oklch(0.6 0.12 270); /* main-500과 동일 */
+  --color-primary-light: oklch(0.75 0.08 270); /* main-300과 동일 */
+  --color-primary-dark: oklch(0.45 0.15 270); /* main-700과 동일 */
 
   /* ✅ 사용자 spacing 토큰 */
   --spacing-xxs: 0.25rem;
@@ -87,4 +92,85 @@
 /* 이름이 지정된 페이지에 대한 여백 설정 */
 @page wide-margins {
   margin: 2cm;
+}
+
+@layer base {
+  /* 블로그 콘텐츠 스타일 */
+  .prose {
+    @apply text-gray-800 leading-7;
+  }
+
+  .prose p {
+    @apply my-6;
+  }
+
+  .prose h1 {
+    @apply text-3xl font-bold mt-12 mb-6;
+  }
+
+  .prose h2 {
+    @apply text-2xl font-bold mt-10 mb-4;
+  }
+
+  .prose h3 {
+    @apply text-xl font-bold mt-8 mb-3;
+  }
+
+  .prose h4 {
+    @apply text-lg font-bold mt-6 mb-2;
+  }
+
+  .prose a {
+    @apply text-primary hover:text-primary/80 transition-colors;
+  }
+
+  .prose ul,
+  .prose ol {
+    @apply my-6 pl-6;
+  }
+
+  .prose ul {
+    @apply list-disc;
+  }
+
+  .prose ol {
+    @apply list-decimal;
+  }
+
+  .prose li {
+    @apply mb-2;
+  }
+
+  .prose blockquote {
+    @apply pl-4 border-l-4 border-gray-300 my-6 italic;
+  }
+
+  .prose pre {
+    @apply bg-gray-800 text-white p-4 rounded-lg my-6 overflow-x-auto;
+  }
+
+  .prose code:not(pre code) {
+    @apply bg-gray-100 px-1.5 py-0.5 rounded text-sm;
+  }
+
+  .prose img {
+    @apply my-8 rounded-lg w-full;
+  }
+
+  .prose table {
+    @apply w-full my-6 border-collapse;
+  }
+
+  .prose th,
+  .prose td {
+    @apply border border-gray-300 p-2;
+  }
+
+  .prose th {
+    @apply bg-gray-100;
+  }
+
+  .prose hr {
+    @apply my-8 border-gray-300;
+  }
 }
