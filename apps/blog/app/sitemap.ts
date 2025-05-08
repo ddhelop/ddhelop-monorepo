@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { getAllPosts } from '../lib/mdx';
+import { getAllPosts } from '../lib/supabase';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://blog.ddhelop.dev';
@@ -8,8 +8,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getAllPosts();
 
   const postUrls = posts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
+    url: `${baseUrl}/${post.slug}`,
+    lastModified: new Date(post.published_at),
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }));
@@ -21,12 +21,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
     },
     {
       url: `${baseUrl}/about`,

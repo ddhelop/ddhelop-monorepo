@@ -1,6 +1,57 @@
-# 김동혁의 블로그
+# Blog App
 
-성능과 SEO를 최적화한 마크다운 기반 블로그 애플리케이션입니다.
+프론트엔드 기술에 관한 블로그 애플리케이션입니다.
+
+## 아키텍처
+
+이 프로젝트는 **Feature-Sliced Design (FSD)** 아키텍처를 따르고 있습니다.
+
+### 디렉토리 구조
+
+```
+apps/blog/
+├── app/                # Next.js App Router 페이지
+├── entities/           # 도메인 엔티티 (Post, Tag 등)
+├── features/           # 기능 단위 모듈
+│   ├── author/         # 저자 관련 기능
+│   ├── home/           # 홈페이지 관련 기능
+│   ├── post/           # 포스트 관련 기능
+│   └── tag/            # 태그 관련 기능
+├── lib/                # 유틸리티 및 라이브러리
+├── shared/             # 공유 컴포넌트 및 유틸리티
+└── widgets/            # 위젯 (여러 기능을 조합한 UI 블록)
+```
+
+### 레이어 설명
+
+- **entities**: 비즈니스 엔티티 (Post, Tag 등)의 타입과 모델을 정의합니다.
+- **features**: 특정 기능과 관련된 모든 것을 포함합니다. 각 feature는 다음 구조를 가집니다:
+  - **api**: 데이터 가져오기 및 조작 함수
+  - **model**: 비즈니스 로직 및 상태 관리
+  - **components**: 기능과 관련된 UI 컴포넌트
+- **shared**: 여러 기능에서 공유되는 UI 컴포넌트, 유틸리티, 타입 등
+- **widgets**: 여러 기능을 조합한 더 큰 UI 블록
+
+## 실행 방법
+
+```bash
+# 개발 서버 실행
+npm run dev
+
+# 빌드
+npm run build
+
+# 프로덕션 서버 실행
+npm start
+```
+
+## 기술 스택
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- date-fns
+- MDX
 
 ## 기술 스택
 
