@@ -1,0 +1,2 @@
+# Supabase 환경 변수를 추가하려면 다음 명령어를 실행하세요:
+echo "SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_here" >> .env

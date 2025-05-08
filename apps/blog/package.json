@@ -6,24 +6,30 @@
     "dev": "node ../../scripts/check-env.js && next dev --turbo -p 3003",
     "build": "node ../../scripts/check-env.js && next build --turbo",
     "start": "next start",
-    "lint": "biome check . --apply"
+    "lint": "biome check . --apply",
+    "migrate": "npx tsx scripts/migrate-mdx-to-supabase.ts"
   },
   "dependencies": {
     "@ddhelop/hooks": "workspace:*",
+    "@mdx-js/loader": "^3.1.0",
+    "@next/mdx": "^15.3.2",
+    "@supabase/supabase-js": "^2.49.4",
+    "@vercel/analytics": "^1.4.0",
+    "@vercel/speed-insights": "^1.0.10",
+    "date-fns": "^3.5.0",
+    "dotenv": "^16.5.0",
+    "gray-matter": "^4.0.3",
     "next": "15.3.0",
     "next-mdx-remote": "^5.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "gray-matter": "^4.0.3",
+    "reading-time": "^1.5.0",
     "rehype-autolink-headings": "^7.1.0",
+    "rehype-highlight": "^7.0.2",
     "rehype-pretty-code": "^0.13.0",
     "rehype-slug": "^6.0.0",
-    "shiki": "^1.1.7",
-    "remark-gfm": "^4.0.0",
-    "reading-time": "^1.5.0",
-    "date-fns": "^3.5.0",
-    "@vercel/analytics": "^1.4.0",
-    "@vercel/speed-insights": "^1.0.10"
+    "remark-gfm": "^4.0.1",
+    "shiki": "^1.1.7"
   },
   "devDependencies": {
     "@types/mdx": "^2.0.11"
