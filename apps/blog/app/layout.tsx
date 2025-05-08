@@ -39,7 +39,6 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: '/favicon.ico',
-    apple: '/apple-icon.png',
   },
   manifest: '/site.webmanifest',
 };
@@ -59,9 +58,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={inter.variable}>
-      <body className="min-h-screen bg-background text-foreground flex flex-col">
+      <body className="min-h-screen bg-white text-foreground flex flex-col">
         <NavBar />
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow pt-16">{children}</main>
         <Footer />
         <Analytics />
         <SpeedInsights />
