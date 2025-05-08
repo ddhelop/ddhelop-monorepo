@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 export default function NavBar() {
@@ -35,32 +36,17 @@ export default function NavBar() {
         isAtTop ? 'border-transparent' : 'border-gray-100'
       } ${visible ? 'translate-y-0' : '-translate-y-full'}`}
     >
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link
-          href="/"
-          className="text-2xl font-bold text-foreground hover:text-primary transition-colors"
-        >
-          ddhelop.dev
+      <div className="max-w-5xl mx-auto px-8 py-4 flex items-center justify-between">
+        <Link href="/" className="hover:text-primary transition-colors">
+          <Image
+            src="/icons/ddhelop_techblog.svg"
+            alt="ddhelop 테크블로그"
+            width={150}
+            height={30}
+            className="h-12 w-auto"
+            priority
+          />
         </Link>
-        <nav>
-          <ul className="flex gap-6">
-            <li>
-              <Link href="/" className="hover:text-primary transition-colors">
-                블로그
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="https://ddhelop.dev"
-                className="hover:text-primary transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                About
-              </Link>
-            </li>
-          </ul>
-        </nav>
       </div>
     </header>
   );
