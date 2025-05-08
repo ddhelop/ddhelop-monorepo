@@ -2,6 +2,7 @@
 # 📦 Dependencies
 # -----------------------------
 node_modules/
+.cursor/
 dist/
 .turbo/
 .pnp/
