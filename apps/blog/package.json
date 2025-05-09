@@ -12,7 +12,9 @@
   "dependencies": {
     "@ddhelop/hooks": "workspace:*",
     "@mdx-js/loader": "^3.1.0",
+    "@mdxeditor/editor": "^3.32.2",
     "@next/mdx": "^15.3.2",
+    "@repo/mdx": "workspace:*",
     "@supabase/supabase-js": "^2.49.4",
     "@vercel/analytics": "^1.4.0",
     "@vercel/speed-insights": "^1.0.10",
