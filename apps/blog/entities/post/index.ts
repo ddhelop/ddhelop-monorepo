@@ -8,4 +8,5 @@ export interface Post {
   content?: string;
   readingTime?: string;
   image?: string;
+  author?: string;
 }

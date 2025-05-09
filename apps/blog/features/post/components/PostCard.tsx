@@ -16,8 +16,8 @@ export function PostCard({
   getPostUrl = (slug) => `/${slug}`,
 }: PostCardProps) {
   return (
-    <Link href={getPostUrl(post.slug)}>
-      <article className="py-6 px-4 rounded-lg transition-all duration-200 cursor-pointer hover:bg-white">
+    <Link href={getPostUrl(post.slug)} className="group block">
+      <article className="py-6 px-4 rounded-lg transition-all duration-200 cursor-pointer hover:bg-gray-50 border border-transparent hover:border-gray-100">
         <div className="flex items-center text-sm text-gray-500 mb-2 gap-2">
           <time dateTime={post.date}>
             {format(new Date(post.date), 'PPP', { locale: ko })}
@@ -27,7 +27,7 @@ export function PostCard({
         </div>
         <div className="flex flex-col md:flex-row gap-5">
           <div className="flex-1">
-            <h2 className="text-xl font-bold mb-2 text-gray-900">
+            <h2 className="text-xl font-bold mb-2 text-gray-900 group-hover:text-primary transition-colors">
               {post.title}
             </h2>
             <p className="text-[15px] text-gray-700 mb-3">

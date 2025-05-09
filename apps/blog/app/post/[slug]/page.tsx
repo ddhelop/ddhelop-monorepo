@@ -5,8 +5,6 @@ import {
   getRecentPosts,
 } from '../../../features/post/api/getPostBySlug';
 import { getAllPosts } from '../../../lib/supabase'; // 정적 경로 생성용으로만 사용
-import { format } from 'date-fns';
-import { ko } from 'date-fns/locale';
 import Link from 'next/link';
 
 type Props = {
@@ -45,18 +43,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-// 정적 경로 생성 (빌드 시 모든 포스트 미리 렌더링)
+// 정적 경로 생성 (선택 사항 - ISR로 처리할 수도 있음)
 export async function generateStaticParams() {
-  try {
-    // Supabase에서 모든 공개 포스트 가져오기
-    const posts = await getAllPosts();
-    return posts.map((post) => ({
-      slug: post.slug,
-    }));
-  } catch (error) {
-    console.error('정적 경로 생성 중 오류:', error);
-    return [];
-  }
+  const posts = await getAllPosts();
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
 }
 
 export default async function BlogPostPage({ params }: Props) {
@@ -76,45 +68,26 @@ export default async function BlogPostPage({ params }: Props) {
     return (
       <div className="mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto relative">
-          <article className="mb-16">
-            <header className="mb-8">
-              <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-              <div className="flex items-center text-gray-500 mb-6 gap-4">
-                <div className="flex items-center">
-                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white mr-2">
-                    김
-                  </div>
-                  <span>김동혁</span>
-                </div>
-                <time dateTime={post.date}>
-                  {format(new Date(post.date), 'PPP', { locale: ko })}
-                </time>
-                <span>{post.readingTime || '약 5분'}</span>
-              </div>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {post.tags.map((tag: string) => (
-                  <span
-                    key={tag}
-                    className="bg-gray-100 text-gray-800 text-sm px-3 py-1 rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </header>
-
-            <div className="prose prose-slate max-w-none">{post.content}</div>
+          {/* 그림자 제거, 기본 스타일 유지 */}
+          <article className="mb-16 bg-white rounded-lg overflow-hidden">
+            {/* 콘텐츠는 MdxRemote의 PostMeta가 처리합니다 */}
+            <div className="prose prose-slate max-w-none p-6 md:p-8">
+              {post.content}
+            </div>
           </article>
 
           {/* 최근 글 */}
           <div className="mt-12 pt-8 border-t border-gray-200">
             <h3 className="text-xl font-bold mb-4">최근 글</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               {recentPosts.map((recentPost) => (
-                <li key={recentPost.slug}>
+                <li
+                  key={recentPost.slug}
+                  className="hover:bg-gray-50 rounded-md transition-colors"
+                >
                   <Link
                     href={`/post/${recentPost.slug}`}
-                    className="text-gray-700 hover:text-primary line-clamp-1 transition-colors"
+                    className="text-gray-700 hover:text-primary block p-3 line-clamp-1 transition-colors"
                   >
                     {recentPost.title}
                   </Link>

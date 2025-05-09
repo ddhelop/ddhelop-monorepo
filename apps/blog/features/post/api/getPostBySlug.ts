@@ -31,6 +31,7 @@ export async function getPostBySlug(slug: string): Promise<PostWithContent> {
     published: post.is_published,
     readingTime: post.reading_time,
     image: post.featured_image,
+    author: '김동혁', // 고정 작성자 이름 (나중에 저자 DB에서 가져올 수 있음)
     content: compiledPost.content,
   };
 }
