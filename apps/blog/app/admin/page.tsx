@@ -76,12 +76,18 @@ export default function AdminDashboardPage() {
           <h2 className="text-lg font-medium mb-4">콘텐츠 관리</h2>
           <ul className="space-y-3 text-[15px]">
             <li>
-              <Link href="#" className="text-primary hover:underline">
+              <Link
+                href="/admin/post/create"
+                className="text-primary hover:underline"
+              >
                 게시물 작성
               </Link>
             </li>
             <li>
-              <Link href="#" className="text-primary hover:underline">
+              <Link
+                href="/admin/posts"
+                className="text-primary hover:underline"
+              >
                 게시물 목록
               </Link>
             </li>
