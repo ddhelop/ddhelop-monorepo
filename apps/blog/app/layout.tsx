@@ -3,8 +3,7 @@ import { Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import '../../../styles/globals.css';
-import NavBar from '../components/NavBar';
-import Footer from '../components/Footer';
+import NavbarWrapper from '@/components/NavbarWrapper';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -51,17 +50,22 @@ export const viewport: Viewport = {
   colorScheme: 'light dark',
 };
 
+// Next.js가 스크롤 복원 기능을 사용하지 않도록 설정
+export const scrollRestoration = 'manual';
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className={inter.variable}>
+    <html
+      lang="ko"
+      className={inter.variable}
+      style={{ scrollBehavior: 'smooth' }}
+    >
       <body className="min-h-screen bg-white text-foreground flex flex-col">
-        <NavBar />
-        <main className="flex-grow pt-16">{children}</main>
-        <Footer />
+        <NavbarWrapper>{children}</NavbarWrapper>
         <Analytics />
         <SpeedInsights />
       </body>
