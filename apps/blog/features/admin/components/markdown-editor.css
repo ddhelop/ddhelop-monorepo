@@ -1,0 +1,352 @@
+/* 에디터 영역 스타일 */
+.mdx-editor-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.mdx-editor-wrapper textarea {
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  line-height: 1.5;
+  tab-size: 2;
+  white-space: pre-wrap;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  resize: none;
+  padding: 12px;
+  color: #333;
+  background-color: transparent;
+  overflow: auto;
+  z-index: 1;
+}
+
+/* 마크다운 에디터 텍스트 영역 - 투명 배경 */
+.markdown-editor-textarea {
+  color: transparent;
+  caret-color: #333; /* 커서만 보이게 설정 */
+  background-color: transparent;
+}
+
+/* 에디터 컨테이너 스타일 */
+.mdx-editor-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #fff;
+}
+
+/* 마크다운 스타일링을 위한 에디터 콘텐츠 스타일 */
+.highlight-container {
+  position: relative;
+  height: 100%;
+  overflow: auto;
+}
+
+/* 툴바 스타일 */
+.mdx-editor-toolbar {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 4px 0;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* 툴바 버튼 스타일 */
+.mdx-editor-wrapper button {
+  transition: all 0.1s ease-in-out;
+  user-select: none;
+  color: #6b7280;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+}
+
+.mdx-editor-wrapper button:hover {
+  background-color: #f3f4f6;
+  color: #000;
+}
+
+.mdx-editor-wrapper button:active {
+  transform: translateY(1px);
+}
+
+/* 마크다운 실시간 스타일링 */
+.markdown-body {
+  line-height: 1.6;
+}
+
+/* 헤딩 스타일 */
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.5em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 0.3em;
+}
+
+.markdown-body h2 {
+  font-size: 1.5em;
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 0.3em;
+}
+
+.markdown-body h3 {
+  font-size: 1.25em;
+}
+
+.markdown-body h4 {
+  font-size: 1em;
+}
+
+/* 굵게, 기울게, 취소선 */
+.markdown-body strong {
+  font-weight: bold;
+  color: #000;
+}
+
+.markdown-body em {
+  font-style: italic;
+  color: #7c3aed;
+}
+
+.markdown-body del {
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+/* 코드 영역 */
+.markdown-body code {
+  background-color: rgba(27, 31, 35, 0.05);
+  border-radius: 3px;
+  font-family: monospace;
+  padding: 0.2em 0.4em;
+  font-size: 85%;
+}
+
+.markdown-body pre {
+  background-color: rgba(27, 31, 35, 0.05);
+  border-radius: 3px;
+  padding: 16px;
+  overflow: auto;
+}
+
+/* 인용문 */
+.markdown-body blockquote {
+  border-left: 4px solid #ddd;
+  color: #6a737d;
+  padding: 0 1em;
+  margin: 0;
+}
+
+/* 링크 */
+.markdown-body a {
+  color: #0366d6;
+  text-decoration: underline;
+}
+
+/* 이미지 */
+.markdown-body img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 드래그 앤 드롭 영역 강조 */
+.mdx-editor-wrapper.drag-over {
+  border: 2px dashed #4299e1;
+  background-color: rgba(66, 153, 225, 0.05);
+}
+
+/* 모바일 디바이스를 위한 반응형 스타일 */
+@media (max-width: 768px) {
+  .mdx-editor-wrapper button {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* 마크다운 실시간 스타일링 */
+.markdown-content {
+  --heading-color: #1a56db;
+  --bold-color: #0d47a1;
+  --italic-color: #7c3aed;
+  --code-color: #059669;
+  --quote-color: #6a737d;
+  --link-color: #0366d6;
+}
+
+/* 실시간 에디터 스타일링 - 헤딩 */
+.md-heading-1 {
+  font-weight: bold;
+  color: var(--heading-color);
+  font-size: 2em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #eaecef;
+}
+
+.md-heading-2 {
+  font-weight: bold;
+  color: var(--heading-color);
+  font-size: 1.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #eaecef;
+}
+
+.md-heading-3 {
+  font-weight: bold;
+  color: var(--heading-color);
+  font-size: 1.25em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.md-heading-4 {
+  font-weight: bold;
+  color: var(--heading-color);
+  font-size: 1em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+/* 실시간 에디터 스타일링 - 서식 */
+.md-bold {
+  font-weight: bold;
+  color: #000;
+}
+
+.md-italic {
+  font-style: italic;
+  color: var(--italic-color);
+}
+
+.md-strikethrough {
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+.md-code {
+  font-family: monospace;
+  background-color: rgba(27, 31, 35, 0.05);
+  color: var(--code-color);
+  padding: 0.1em 0.2em;
+  border-radius: 3px;
+}
+
+.md-codeblock {
+  font-family: monospace;
+  background-color: rgba(27, 31, 35, 0.05);
+  color: var(--code-color);
+  padding: 8px;
+  border-radius: 3px;
+  margin: 8px 0;
+}
+
+.md-link {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+.md-image {
+  max-width: 100%;
+  margin: 8px 0;
+}
+
+.md-quote {
+  border-left: 4px solid #ddd;
+  color: var(--quote-color);
+  padding-left: 8px;
+  font-style: italic;
+}
+
+/* 실시간 에디터 인풋 테두리 제거 */
+.no-border {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* 글쓰기 페이지 패딩 */
+.writing-container {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 입력창 포커스 스타일 */
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+/* 드래그 앤 드롭 관련 스타일 */
+.dnd-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(66, 153, 225, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 10;
+  border: 2px dashed #4299e1;
+  border-radius: 4px;
+}
+
+.dnd-overlay-message {
+  background-color: white;
+  padding: 16px 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 에디터와 미리보기 컨테이너 수정 */
+.editor-preview-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  height: 100%;
+}
+
+.editor-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* 마크다운 미리보기 스타일 추가 */
+.markdown-preview {
+  overflow: auto;
+  height: 100%;
+}
+
+/* 미리보기 영역 테두리 제거 및 스크롤 설정 */
+.preview-container {
+  border: none;
+  padding: 16px;
+  overflow: auto;
+  height: 100%;
+  background-color: #f9f9f9;
+}
