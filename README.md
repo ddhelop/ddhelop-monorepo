@@ -16,7 +16,9 @@ ddhelop-monorepo/
 │   ├── rs/               # 이력서 앱
 │   └── blog/             # 블로그 앱
 ├── packages/             # 공유 패키지
-│   └── hooks/            # 공통 React 훅
+│   ├── hooks/            # 공통 React 훅
+│   ├── mdx/              # MDX 컴포넌트 및 에디터
+│   └── typescript-config/ # 공통 TypeScript 설정
 ├── styles/               # 전역 스타일
 ├── pnpm-workspace.yaml   # PNPM 워크스페이스 설정
 └── turbo.json            # Turborepo 설정
@@ -31,6 +33,9 @@ ddhelop-monorepo/
 - **스타일링**: TailwindCSS 4
 - **언어**: TypeScript
 - **아이콘**: Heroicons 및 Lucide React
+- **데이터베이스**: Supabase
+- **인증**: 구글 OAuth
+- **에디터**: MDX 에디터 (Monaco Editor 기반)
 - **코드 품질 관리**: Biome
 
 ## 📋 프로젝트 구성
@@ -44,14 +49,27 @@ ddhelop-monorepo/
   - **주요 기능**: 인적 사항, 프로젝트 경험, 경력, 교육
   - **특징**: 플로팅 네비게이션
 - **blog**: 블로그 앱
-  - **주요 기능**: MDX 기반 블로그 포스트, 코드 하이라이팅, 태그 시스템
-  - **특징**: SSG 정적 생성, SEO 최적화, 성능 최적화
+  - **주요 기능**: MDX 기반 블로그 포스트, 코드 하이라이팅, 태그 시스템, 관리자 대시보드
+  - **특징**: SSG 정적 생성, SEO 최적화, 성능 최적화, Supabase 기반 DB 저장소
+  - **관리자 기능**: 포스트 작성/편집, 이미지 업로드, 태그 관리, Google OAuth 인증
 
 ### 패키지 (Packages)
 
 - **@ddhelop/hooks**: 공통 React 훅
 
   - useFormattedText: 커스텀 텍스트 포맷팅 훅 (마크다운 스타일 텍스트 지원)
+
+- **@ddhelop/mdx**: MDX 관련 컴포넌트 및 에디터
+
+  - MdxEditor: MDX 에디터 컴포넌트
+  - MdxViewer: MDX 렌더링 컴포넌트
+  - MdxComponents: 커스텀 MDX 요소 컴포넌트 집합
+  - 기타: 이미지, 링크, 콜아웃 등 MDX 확장 컴포넌트
+
+- **@ddhelop/typescript-config**: 공통 TypeScript 설정
+  - base: 기본 설정
+  - nextjs: Next.js 프로젝트용 설정
+  - react-library: React 라이브러리용 설정
 
 ## 📝 커스텀 텍스트 포맷팅
 
@@ -98,3 +116,55 @@ function MyComponent() {
   return <div>{formatText('이것은 <bsb>강조</bsb>된 텍스트입니다.')}</div>;
 }
 ```
+
+### MDX 에디터 사용하기
+
+```tsx
+import { MdxEditor } from '@ddhelop/mdx';
+
+function BlogPostEditor() {
+  const [content, setContent] = useState('');
+
+  return (
+    <MdxEditor
+      value={content}
+      onChange={setContent}
+      onImageUpload={async (file) => {
+        // 이미지 업로드 로직
+        return 'https://example.com/images/uploaded-image.jpg';
+      }}
+    />
+  );
+}
+```
+
+### MDX 렌더링하기
+
+```tsx
+import { MdxViewer } from '@ddhelop/mdx';
+
+function BlogPost({ content }) {
+  return (
+    <article className="prose dark:prose-invert">
+      <MdxViewer content={content} />
+    </article>
+  );
+}
+```
+
+## 🔐 인증 기능
+
+블로그 앱은 관리자 대시보드에 안전하게 접근하기 위해 Google OAuth 기반 인증을 사용합니다:
+
+- 특정 관리자 이메일만 접근 가능
+- 토큰 기반 인증
+- 세션 관리 (쿠키 및 localStorage)
+
+## 🖼️ 이미지 업로드
+
+블로그 앱에서는 Supabase Storage를 활용한 이미지 업로드 시스템을 구현했습니다:
+
+- 클라이언트 측 이미지 압축
+- 서버 측 인증 확인
+- 상대 경로 URL 반환 (API 프록시)
+- 이미지 캐싱 및 최적화
