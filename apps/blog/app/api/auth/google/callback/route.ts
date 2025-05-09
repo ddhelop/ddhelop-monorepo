@@ -6,7 +6,10 @@ import { isAdminEmail } from '../../../../../features/admin/utils/auth';
 const CLIENT_ID =
   process.env.GOOGLE_CLIENT_ID ||
   '516945039845-ap29ghurtsgqf59vdhd99i7jk20t2f5l.apps.googleusercontent.com';
-const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || ''; // 실제 배포 시 반드시 환경 변수로 설정해야 함
+const CLIENT_SECRET =
+  process.env.GOOGLE_CLIENT_SECRET === 'DUMMY_SECRET'
+    ? ''
+    : process.env.GOOGLE_CLIENT_SECRET || ''; // 더미 시크릿을 빈 문자열로 처리
 const REDIRECT_URI =
   process.env.REDIRECT_URI || 'http://localhost:3003/api/auth/google/callback';
 const IS_DEV = process.env.NODE_ENV !== 'production';
@@ -16,7 +19,7 @@ const IS_DEV = process.env.NODE_ENV !== 'production';
  */
 async function getGoogleOAuthTokens(code: string) {
   // 개발 환경이고 클라이언트 시크릿이 없는 경우
-  if (IS_DEV && !CLIENT_SECRET) {
+  if (IS_DEV && (!CLIENT_SECRET || CLIENT_SECRET === 'DUMMY_SECRET')) {
     console.warn(
       '개발 환경에서 CLIENT_SECRET이 설정되지 않았습니다. 개발용 토큰을 반환합니다.'
     );
@@ -103,6 +106,14 @@ async function getGoogleUser(accessToken: string, idToken: string) {
  */
 export async function GET(request: NextRequest) {
   try {
+    console.log('환경 설정 확인:', {
+      isDev: IS_DEV,
+      hasClientId: !!CLIENT_ID,
+      hasClientSecret: !!CLIENT_SECRET,
+      clientSecretValue: CLIENT_SECRET ? 'exists' : 'empty',
+      redirectUri: REDIRECT_URI,
+    });
+
     // URL에서 인증 코드 추출
     const searchParams = request.nextUrl.searchParams;
     const code = searchParams.get('code');
@@ -114,8 +125,21 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    console.log(`인증 코드 받음: ${code.substring(0, 10)}...`);
+
     // 구글 OAuth 토큰 교환
-    const { access_token, id_token } = await getGoogleOAuthTokens(code);
+    const tokens = await getGoogleOAuthTokens(code);
+    console.log(
+      '토큰 응답:',
+      tokens ? '성공' : '실패',
+      tokens
+        ? `(access_token: ${tokens.access_token ? '있음' : '없음'}, id_token: ${
+            tokens.id_token ? '있음' : '없음'
+          })`
+        : ''
+    );
+
+    const { access_token, id_token } = tokens || {};
 
     if (!access_token || !id_token) {
       return NextResponse.redirect(
