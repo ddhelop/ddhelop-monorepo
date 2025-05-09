@@ -1,6 +1,7 @@
 <div style="display: flex; gap: 16px;">
   <img src="https://github.com/user-attachments/assets/dce34e9d-6bd8-4231-863d-c99ac37400bc" alt="rs" width="100"/>
-  <img src="https://github.com/user-attachments/assets/ce66bea6-0046-4648-8fd9-896e9082e14f" alt="rs" width="100"/>
+  <img src="https://github.com/user-attachments/assets/ce66bea6-0046-4648-8fd9-896e9082e14f" alt="pf" width="100"/>
+  <img src="https://github.com/user-attachments/assets/2cf1b07e-e148-4fbf-a083-9a5c3b5228b1" alt="blog" width="100"/>
 </div>
 
 # ddhelop-monorepo
