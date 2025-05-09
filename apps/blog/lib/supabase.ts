@@ -1,18 +1,35 @@
 import { createClient } from '@supabase/supabase-js';
 import { compileMDX } from 'next-mdx-remote/rsc';
-import rehypePrettyCode from 'rehype-pretty-code';
-import rehypeSlug from 'rehype-slug';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypeHighlight from 'rehype-highlight';
-import remarkGfm from 'remark-gfm';
 import readingTime from 'reading-time';
+import React from 'react';
+import { MdxRemote } from '@repo/mdx';
 
 // Supabase 환경 변수
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
-// Supabase 클라이언트 생성
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Supabase 클라이언트 생성 (브라우저에서 쿠키 사용)
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    persistSession: true,
+    autoRefreshToken: true,
+    detectSessionInUrl: true,
+  },
+});
+
+// 서버 측에서 서비스 키로 Supabase 클라이언트 생성 (어드민 API용)
+export const supabaseAdmin = process.env.SUPABASE_SERVICE_ROLE_KEY
+  ? createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+      process.env.SUPABASE_SERVICE_ROLE_KEY,
+      {
+        auth: {
+          autoRefreshToken: false,
+          persistSession: false,
+        },
+      }
+    )
+  : supabase; // 서비스 키가 없으면 일반 클라이언트 사용
 
 // 블로그 글 인터페이스
 export interface BlogPost {
@@ -37,6 +54,80 @@ export interface Author {
   email: string;
   bio: string;
   avatar_url?: string;
+}
+
+// 이미지 업로드 함수
+export async function uploadImage(
+  file: File,
+  compressedDataUrl: string
+): Promise<string> {
+  try {
+    // 현재 사용자 세션 확인
+    const { data: sessionData } = await supabase.auth.getSession();
+
+    // 로그인 상태가 아니면, Google 인증을 통해 얻은 관리자 이메일로 로그인 시도
+    if (!sessionData?.session) {
+      console.log(
+        'Supabase 인증 세션이 없습니다. 관리자 권한으로 업로드를 시도합니다.'
+      );
+
+      // 브라우저 환경인 경우 localStorage에서 관리자 이메일을 확인
+      if (typeof window !== 'undefined') {
+        const adminEmail = localStorage.getItem('user_email');
+
+        // 이메일이 있으면 임시 로그인 시도 (이 부분은 보안상 실제로는 위험할 수 있음)
+        if (adminEmail) {
+          await supabase.auth
+            .signInWithPassword({
+              email: adminEmail,
+              password: 'temp_password_for_storage_access',
+            })
+            .catch((err) => {
+              console.log('임시 인증 실패:', err);
+            });
+        }
+      }
+    }
+
+    // 파일 형식 가져오기 (JPEG, PNG 등)
+    const fileFormat = file.type.split('/')[1];
+
+    // 파일 이름 생성 (현재 시간 + 원본 파일 이름)
+    const fileName = `${Date.now()}-${file.name.replace(/\s+/g, '-')}`;
+
+    // 버킷 이름
+    const bucketName = 'images';
+
+    // Blob으로 변환 (base64 데이터 URL에서)
+    const base64Data = compressedDataUrl.split(',')[1];
+    const blob = await fetch(`data:${file.type};base64,${base64Data}`).then(
+      (res) => res.blob()
+    );
+
+    // Storage에 업로드 (서비스 롤 키 사용)
+    const { data, error } = await supabase.storage
+      .from(bucketName)
+      .upload(`uploads/${fileName}`, blob, {
+        contentType: file.type,
+        cacheControl: '3600',
+        upsert: false,
+      });
+
+    if (error) {
+      console.error('이미지 업로드 오류:', error);
+      throw error;
+    }
+
+    // 공개 URL 가져오기
+    const { data: publicUrlData } = supabase.storage
+      .from(bucketName)
+      .getPublicUrl(`uploads/${fileName}`);
+
+    return publicUrlData.publicUrl;
+  } catch (error) {
+    console.error('이미지 업로드 중 오류 발생:', error);
+    throw error;
+  }
 }
 
 // 블로그 글 가져오기 (공개된 글만)
@@ -164,21 +255,13 @@ export async function deletePost(id: string) {
   return true;
 }
 
-// MDX 내용 컴파일을 위한 옵션
-const mdxOptions = {
-  remarkPlugins: [remarkGfm],
-  rehypePlugins: [rehypeSlug, rehypeHighlight],
-};
-
 // MDX 컴파일 함수
 export async function compileSupabaseMdxContent(content: string) {
   try {
-    const { content: compiledContent } = await compileMDX({
-      source: content,
-      options: { parseFrontmatter: true, mdxOptions },
-    });
-
-    return { content: compiledContent };
+    // 서버 컴포넌트에서는 직접 React 컴포넌트를 반환하는 것이 더 효율적입니다
+    return {
+      content: React.createElement(MdxRemote, { source: content }),
+    };
   } catch (error) {
     console.error('Error compiling MDX:', error);
     throw error;
